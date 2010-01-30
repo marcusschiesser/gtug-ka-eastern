@@ -7,17 +7,17 @@
   
   <!-- Servlets -->
     <servlet>
-        <servlet-name>org.gtug.karlsruhe.bunnycasher.bunnycasher EggService</servlet-name>
-        <servlet-class>org.gtug.karlsruhe.bunnycasher.server.EggServiceImpl</servlet-class>
+        <servlet-name>org.gtug.karlsruhe.bunnycacher.bunnycacher EggService</servlet-name>
+        <servlet-class>org.gtug.karlsruhe.bunnycacher.server.EggServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>org.gtug.karlsruhe.bunnycasher.bunnycasher EggService</servlet-name>
-        <url-pattern>/bunnycasher/egg</url-pattern>
+        <servlet-name>org.gtug.karlsruhe.bunnycacher.bunnycacher EggService</servlet-name>
+        <url-pattern>/bunnycacher/egg</url-pattern>
     </servlet-mapping>
 
     <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>Gtug_ka_eastern.html</welcome-file>
+    <welcome-file>Bunnycacher.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
