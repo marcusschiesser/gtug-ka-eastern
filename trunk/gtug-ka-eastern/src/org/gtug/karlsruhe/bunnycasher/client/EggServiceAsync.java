@@ -1,6 +1,6 @@
 package org.gtug.karlsruhe.bunnycasher.client;
 
-import org.gtug.karlsruhe.bunnycasher.common.Egg;
+import org.gtug.karlsruhe.bunnycasher.client.common.Egg;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
