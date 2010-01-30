@@ -18,7 +18,6 @@ public class EggServiceImpl implements EggService {
 	@Inject
 	Provider<EntityManager> em;
 
-	@Override
 	public void createEgg(Egg egg) {
 
 	}
