@@ -5,7 +5,6 @@ import org.gtug.karlsruhe.bunnycasher.client.common.Egg;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface EggServiceAsync {
-	
-	void createEgg(Egg egg, AsyncCallback<Void> callback);
 
+	void createEgg(Egg egg, AsyncCallback<Void> callback);
 }

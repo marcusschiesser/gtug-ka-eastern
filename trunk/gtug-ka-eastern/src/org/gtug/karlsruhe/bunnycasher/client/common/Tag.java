@@ -1,9 +1,14 @@
 package org.gtug.karlsruhe.bunnycasher.client.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tag {
+public class Tag implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String message;
 	private Date timestamp;
 	private User user;

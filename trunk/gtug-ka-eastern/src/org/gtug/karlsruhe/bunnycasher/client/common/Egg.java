@@ -1,9 +1,14 @@
 package org.gtug.karlsruhe.bunnycasher.client.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Egg {
+public class Egg implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double latitude;
 	private double longitude;
 	private String hint;
