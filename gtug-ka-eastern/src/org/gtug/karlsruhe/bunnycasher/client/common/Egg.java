@@ -10,7 +10,11 @@ public class Egg {
 	private Date created;
 	private User creator;
 
-	public Egg(double latitude, double longitude, String hint) {
+    
+    public Egg() {
+    }
+
+    public Egg(double latitude, double longitude, String hint) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
