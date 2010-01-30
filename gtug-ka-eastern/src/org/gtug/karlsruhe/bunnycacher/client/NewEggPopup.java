@@ -23,7 +23,7 @@ public class NewEggPopup extends DialogBox {
 	private DialogBox myself = this;
 
 	public NewEggPopup(final LatLng actPos) {
-		final TextBox text = new TextBox();
+		final TextBox hintTextInput = new TextBox();
 		
 		setText("neues Ei verstecken");
 		// Enable animation.
@@ -34,7 +34,7 @@ public class NewEggPopup extends DialogBox {
 		ok.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
-				Egg egg=new Egg(actPos.getLatitude(), actPos.getLongitude(), text.getText());
+				Egg egg=new Egg(actPos.getLatitude(), actPos.getLongitude(), hintTextInput.getText());
 				
 				// when not running in development mode on localhost
 				// direct RPC calls to http://bunnycacher.appspot.com/bunnycasher/GWT.rpc
@@ -67,7 +67,7 @@ public class NewEggPopup extends DialogBox {
 		
 		panel = new DockPanel();
 		panel.add(ok, DockPanel.NORTH);
-		panel.add(text, DockPanel.SOUTH);
+		panel.add(hintTextInput, DockPanel.SOUTH);
 		setWidget(panel);
 	}
 
