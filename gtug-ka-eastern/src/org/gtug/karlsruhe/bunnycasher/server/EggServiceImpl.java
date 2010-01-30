@@ -1,7 +1,7 @@
 package org.gtug.karlsruhe.bunnycasher.server;
 
 import org.gtug.karlsruhe.bunnycasher.client.EggService;
-import org.gtug.karlsruhe.bunnycasher.common.Egg;
+import org.gtug.karlsruhe.bunnycasher.client.common.Egg;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

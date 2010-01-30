@@ -27,7 +27,7 @@ public class NewEggPopup extends DialogBox {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
 				Egg egg=new Egg(42.0, 43.0, "ein hint");
-				Gtug_ka_eastern.eggService.greetServer(egg, null);
+				Gtug_ka_eastern.eggService.createEgg(egg,null);
 				NewEggPopup.this.hide();
 			}
 		});
