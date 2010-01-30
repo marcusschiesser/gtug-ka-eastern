@@ -62,7 +62,6 @@ public class NewEggPopup extends DialogBox {
 					}
 					
 				});
-				NewEggPopup.this.hide();
 			}
 		});
 		
