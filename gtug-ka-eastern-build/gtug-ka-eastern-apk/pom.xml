@@ -6,6 +6,7 @@
         <artifactId>eastern-root</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <version>1.0-SNAPSHOT</version>
     <groupId>com.gtug.ka</groupId>
     <artifactId>eastern-apk</artifactId>
     <packaging>apk</packaging>
@@ -37,15 +38,64 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.gtug.ka</groupId>
+                                    <artifactId>eastern-war</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>war</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/eastern-war</outputDirectory>
+                                    <destFileName>eastern-war.zip</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/wars</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <delete dir="assets1" includeemptydirs="true"/>
+                                <!-- Using an ant task to deflate webinstaller.zip -->
+                                <unzip src="${project.build.directory}/eastern-war/eastern-war.zip" dest="assets1"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
         <!--
         <dependency>
-            <groupId>android</groupId>
-            <artifactId>android</artifactId>
-            <scope>provided</scope>
+            <groupId>com.gtug.ka</groupId>
+            <artifactId>eastern-war</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
         </dependency>-->
     </dependencies>
 
