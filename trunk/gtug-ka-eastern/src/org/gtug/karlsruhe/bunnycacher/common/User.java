@@ -1,13 +1,8 @@
-package org.gtug.karlsruhe.bunnycasher.client.common;
+package org.gtug.karlsruhe.bunnycacher.common;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class User implements Serializable {
 
 	private String id;
 	

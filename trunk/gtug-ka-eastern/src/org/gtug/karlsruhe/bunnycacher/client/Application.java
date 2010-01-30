@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycasher.client;
+package org.gtug.karlsruhe.bunnycacher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class Gtug_ka_eastern implements EntryPoint {
+public class Application implements EntryPoint {
 	/**
 	 * The message displayed to the user when the server cannot be reached or
 	 * returns an error.
