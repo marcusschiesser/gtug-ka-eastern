@@ -1,5 +1,6 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
+import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 
 import com.google.inject.servlet.ServletModule;
@@ -13,8 +14,12 @@ public class BunnyCacherServletModule extends ServletModule {
 
 		// cannot use @ImplementedBy
 		bind(EggService.class).to(EggServiceImpl.class);
-		
+		bind(LoginService.class).to(LoginServiceImpl.class);
+
 		bindConstant().annotatedWith(JpaUnit.class).to("default");
+
+
+
 	}
 
 }
