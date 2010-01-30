@@ -2,10 +2,12 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DockPanel;
@@ -31,16 +33,26 @@ public class NewEggPopup extends DialogBox {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
 				Egg egg=new Egg(actPos.getLatitude(), actPos.getLongitude(), "ein hint");
-				Application.eggService.createEgg(egg, new AsyncCallback() {
+				
+				// when not running in development mode on localhost
+				// direct RPC calls to http://bunnycacher.appspot.com/bunnycasher/GWT.rpc
+				ServiceDefTarget endpoint = (ServiceDefTarget)Application.eggService;
+				String rpcUrl = endpoint.getServiceEntryPoint();
+				if (!rpcUrl.contains("localhost")) {
+					// set new rpcURL
+					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycasher/GWT.rpc");
+				}
+				
+				Application.eggService.createEgg(egg, new AsyncCallback<Void>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
 						// TODO Auto-generated method stub
-						Window.alert("Callback exception");
+						Window.alert("Callback exception: " + caught.toString() + " : " + caught.getMessage());
 					}
 
 					@Override
-					public void onSuccess(Object result) {
+					public void onSuccess(Void result) {
 						// TODO Auto-generated method stub
 						myself.hide();
 						
