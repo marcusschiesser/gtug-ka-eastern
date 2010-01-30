@@ -31,7 +31,7 @@ public class MainForm extends DockLayoutPanel {
 		addNorth(toolBarPanel, 2);
 		newEggButton =new Button("neues Ei verstecken",new ClickHandler() {			
 			public void onClick(ClickEvent event) {
-				new NewEggPopup().show();
+				new NewEggPopup(_map.getPosition()).show();
 			}
 		});
 		updatePosButton = new Button("update Pos", new ClickHandler() {

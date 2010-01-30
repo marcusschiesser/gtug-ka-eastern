@@ -9,8 +9,10 @@ public class Map {
 	private MapWidget _mapWidget;
 	private Marker _position;
 	private Circle _radar;
+	private LatLng _actPos;
 	
 	public Map(LatLng actPos) {
+		_actPos = actPos;
 		_mapWidget = MapFactory.createMap(actPos);
 		_position = MapFactory.createPosition(_mapWidget, actPos);
 		_radar = MapFactory.createCircle(_mapWidget, actPos, 0.1);
@@ -21,10 +23,15 @@ public class Map {
 	}
 	
 	public void updatePosition(LatLng actPos) {
+		_actPos = actPos;
 		// call this function to update the position
 		_position.setPosition(actPos);
 		_mapWidget.getMapJSO().setCenter(actPos);
 		// draw radar
+	}
+	
+	public LatLng getPosition() {
+		return _actPos;
 	}
 	
 	private void drawRadar(LatLng actPos, double radius) {
