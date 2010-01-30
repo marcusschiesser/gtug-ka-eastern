@@ -13,18 +13,17 @@ public class Gtug_ka_eastern implements EntryPoint {
 	 * returns an error.
 	 */
 
-
 	/**
 	 * Create a remote service proxy to talk to the server-side Greeting
 	 * service.
 	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
+	public static final EggServiceAsync eggService = GWT.create(EggService.class);
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
 		RootPanel.get("main").add(new MainForm());
+
 	}
 }
