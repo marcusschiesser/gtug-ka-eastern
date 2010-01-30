@@ -10,7 +10,12 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.InlineLabel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.googlecode.maps3.client.LatLng;
 
 /**
@@ -22,14 +27,14 @@ public class NewEggPopup extends DialogBox {
 	private DialogBox myself = this;
 
 	public NewEggPopup(final LatLng actPos) {
-		final TextBox hintTextInput = new TextBox();
+		final TextArea hintTextInput = new TextArea();
 		
-		setText("neues Ei verstecken");
+		setText("Neues Ei verstecken");
 		// Enable animation.
 		setAnimationEnabled(true);
 		// Enable glass background.
 		setGlassEnabled(true);
-		Button ok = new Button("OK");
+		Button ok = new Button("Ei verstecken");
 		ok.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
@@ -63,10 +68,23 @@ public class NewEggPopup extends DialogBox {
 				});
 			}
 		});
-		
+		Button cancel = new Button("Abbruch");
+		cancel.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				myself.hide();
+			}
+		});
+		HorizontalPanel buttons = new HorizontalPanel();
+		buttons.add(ok);
+		buttons.add(cancel);
+		VerticalPanel center = new VerticalPanel();
+		center.add(new HTML("<div class='hint'>Hier kannst Du ein Osterei, das Du an der aktuellen Position versteckt hast, für andere zum Finden eintragen. <br /><br />Gib einen Hinweis für die Suchenden an:</div>", true));
+		hintTextInput.setCharacterWidth(40);
+		hintTextInput.setVisibleLines(3);
+		center.add(hintTextInput);
 		panel = new DockPanel();
-		panel.add(ok, DockPanel.NORTH);
-		panel.add(hintTextInput, DockPanel.SOUTH);
+		panel.add(center, DockPanel.CENTER);
+		panel.add(buttons, DockPanel.SOUTH);
 		setWidget(panel);
 	}
 

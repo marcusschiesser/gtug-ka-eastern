@@ -21,40 +21,30 @@ import com.googlecode.maps3.client.LatLng;
  */
 public class MainForm extends DockLayoutPanel {
 	private Button newEggButton;
-	private Button updatePosButton;
 	private HorizontalPanel toolBarPanel;
 	private Map _map;
-	private InlineLabel debugLabel;
 	
 	public MainForm() {
-		super(Unit.EM);
+		super(Unit.PX);
 		setWidth("100%");
 		setHeight("100%");
-		toolBarPanel=new HorizontalPanel ();
-		addNorth(toolBarPanel, 2);
-		newEggButton =new Button("neues Ei verstecken",new ClickHandler() {			
+		toolBarPanel = new HorizontalPanel();
+		toolBarPanel.setStyleName("top-toolbar");
+		addNorth(toolBarPanel, 39);
+		newEggButton = new Button("neues Ei verstecken",new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				new NewEggPopup(_map.getPosition()).show();
 			}
 		});
-		updatePosButton = new Button("update Pos", new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				// call this function to update the position
-				_map.updatePosition(LatLng.newInstance(49, 8.383));
-			}
-		});
+		newEggButton.getElement().setId("egg-button");
 		toolBarPanel.add(newEggButton);
-		toolBarPanel.add(updatePosButton); 
 		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
 		_map = new Map(actPos);
 		add(_map.getMap());
 		
-		debugLabel = new InlineLabel("Debug");
-		toolBarPanel.add(debugLabel);
 		Geolocation.watchPosition( new PositionSuccessCallback(){
 			public void onPosition(double lat, double lon) {
 				_map.updatePosition(LatLng.newInstance(lat, lon));
-				debugLabel.setText("Lat: " + lat + " Lon: " + lon);
 				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<List<EggDto>>() {
 					
 					@Override
