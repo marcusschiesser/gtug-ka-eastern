@@ -1,6 +1,7 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
+import org.gtug.karlsruhe.phonegap.client.Notification;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -42,7 +43,7 @@ public class NewEggPopup extends DialogBox {
 				ServiceDefTarget endpoint = (ServiceDefTarget)Application.eggService;
 				String rpcUrl = endpoint.getServiceEntryPoint();
 				// Window.alert("rpcURL: " + rpcUrl);
-				if (rpcUrl.startsWith("file:")) {
+				if (!rpcUrl.startsWith("file:")) {
 					// set new rpcURL
 					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycasher/GWT.rpc");
 				}
@@ -51,15 +52,13 @@ public class NewEggPopup extends DialogBox {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-						Window.alert("Callback exception: " + caught.toString() + " : " + caught.getMessage());
+						Notification.alert("Callback exception: " + caught.toString() + " : " + caught.getMessage(), "Error", ":("); // TODO: externalize strings
 					}
 
 					@Override
 					public void onSuccess(Void result) {
-						// TODO Auto-generated method stub
 						myself.hide();
-						
+						Notification.alert("Your egg has been saved.", "We likez Eggs", ":)"); // TODO: externalize strings
 					}
 					
 				});
