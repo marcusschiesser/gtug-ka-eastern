@@ -4,6 +4,8 @@ import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.MapOptions;
 import com.googlecode.maps3.client.MapWidget;
 import com.googlecode.maps3.client.Marker;
+import com.googlecode.maps3.client.MarkerImage;
+import com.googlecode.maps3.client.Point;
 
 public class MapFactory {
 	public static MapWidget createMap(LatLng latLng) {
@@ -28,7 +30,8 @@ public class MapFactory {
 	public static Marker createEgg(MapWidget map, LatLng latLng) {
 		Marker pos = Marker.newInstance();
 		pos.setPosition(latLng);
-		pos.setIcon("icons/eggicon.png");
+		MarkerImage icon = MarkerImage.newInstance("icons/eggicon.png", Point.newInstance(32/2, 32/2));
+		pos.setIcon(icon);
 		pos.setMap(map.getMapJSO());
 		return pos;
 	}
