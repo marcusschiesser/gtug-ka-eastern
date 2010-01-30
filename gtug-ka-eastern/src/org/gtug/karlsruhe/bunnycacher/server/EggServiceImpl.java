@@ -1,20 +1,26 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
+import javax.persistence.EntityManager;
+
 import org.gtug.karlsruhe.bunnycacher.client.EggService;
 import org.gtug.karlsruhe.bunnycacher.common.Egg;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.Singleton;
 
 /**
  * The server side implementation of the RPC service.
  */
-@SuppressWarnings("serial")
-public class EggServiceImpl extends RemoteServiceServlet implements
-		EggService {
+@Singleton
+public class EggServiceImpl implements EggService {
+
+	@Inject
+	Provider<EntityManager> em;
 
 	@Override
 	public void createEgg(Egg egg) {
-		
+
 	}
 
 }
