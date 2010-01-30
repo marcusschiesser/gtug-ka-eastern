@@ -22,7 +22,8 @@
                 <version>2.2.0</version>
                 <configuration>
                     <sdk>
-                        <path>${env.ANDROID_HOME}</path>
+                        <!--<path>${env.ANDROID_HOME}</path>-->
+                        <path>/Users/cwack/Documents/tools/android-sdk-mac_86</path>
                         <platform>1.1</platform>
                     </sdk>
                     <deleteConflictingFiles>true</deleteConflictingFiles>
@@ -40,17 +41,12 @@
     </build>
 
     <dependencies>
+        <!--
         <dependency>
             <groupId>android</groupId>
             <artifactId>android</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 
