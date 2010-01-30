@@ -9,7 +9,10 @@ public class Tag {
 	private User user;
 	private Egg egg;
 
-	public String getMessage() {
+    public Tag() {
+    }
+
+    public String getMessage() {
 		return message;
 	}
 

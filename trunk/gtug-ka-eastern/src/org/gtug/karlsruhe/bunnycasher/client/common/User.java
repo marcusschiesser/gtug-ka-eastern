@@ -6,7 +6,10 @@ public class User {
 	
 	public static User currentUser=new User();
 
-	public String getId() {
+    public User() {
+    }
+
+    public String getId() {
 		return id;
 	}
 
