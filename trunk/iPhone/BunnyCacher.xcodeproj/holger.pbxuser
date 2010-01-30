@@ -2,16 +2,16 @@
 {
 	1D3623240D0F684500981E51 /* BunnyCacherAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 456}}";
+			sepNavIntBoundsRect = "{{0, 0}, {811, 430}}";
 			sepNavSelRange = "{261, 0}";
 			sepNavVisRange = "{0, 272}";
 		};
 	};
 	1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {811, 1235}}";
-			sepNavSelRange = "{780, 0}";
-			sepNavVisRange = "{538, 799}";
+			sepNavIntBoundsRect = "{{0, 0}, {811, 1274}}";
+			sepNavSelRange = "{110, 9}";
+			sepNavVisRange = "{0, 495}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* BunnyCacher */ = {
@@ -23,7 +23,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 8BCE66201114614A00E7DF23 /* BunnyCacher */;
-		activeSDKPreference = iphoneos3.0;
+		activeSDKPreference = iphonesimulator3.1.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* BunnyCacher */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* BunnyCacher */,
@@ -118,6 +118,17 @@
 			8B648E12111499B30093144B /* PBXTextBookmark */ = 8B648E12111499B30093144B /* PBXTextBookmark */;
 			8B648E4911149EB90093144B /* PBXTextBookmark */ = 8B648E4911149EB90093144B /* PBXTextBookmark */;
 			8B648E4A11149EB90093144B /* PBXTextBookmark */ = 8B648E4A11149EB90093144B /* PBXTextBookmark */;
+			8B648E691114A05F0093144B /* PBXTextBookmark */ = 8B648E691114A05F0093144B /* PBXTextBookmark */;
+			8B648E881114A1590093144B /* PBXTextBookmark */ = 8B648E881114A1590093144B /* PBXTextBookmark */;
+			8B648EB71114A3280093144B /* PBXTextBookmark */ = 8B648EB71114A3280093144B /* PBXTextBookmark */;
+			8B648EB81114A3280093144B /* PBXTextBookmark */ = 8B648EB81114A3280093144B /* PBXTextBookmark */;
+			8B648EBF1114A3330093144B /* PBXTextBookmark */ = 8B648EBF1114A3330093144B /* PBXTextBookmark */;
+			8B648EC01114A3330093144B /* PBXBookmark */ = 8B648EC01114A3330093144B /* PBXBookmark */;
+			8B648EC11114A3330093144B /* PlistBookmark */ = 8B648EC11114A3330093144B /* PlistBookmark */;
+			8B648EC21114A3330093144B /* PBXBookmark */ = 8B648EC21114A3330093144B /* PBXBookmark */;
+			8B648EC31114A3330093144B /* PBXTextBookmark */ = 8B648EC31114A3330093144B /* PBXTextBookmark */;
+			8B648EC41114A3330093144B /* PBXTextBookmark */ = 8B648EC41114A3330093144B /* PBXTextBookmark */;
+			8B648EC51114A3330093144B /* PBXTextBookmark */ = 8B648EC51114A3330093144B /* PBXTextBookmark */;
 			8BCE674711146D5100E7DF23 = 8BCE674711146D5100E7DF23 /* PBXBookmark */;
 			8BCE674811146D5100E7DF23 = 8BCE674811146D5100E7DF23 /* PBXBookmark */;
 			8BCE674911146D5100E7DF23 = 8BCE674911146D5100E7DF23 /* PBXTextBookmark */;
@@ -135,14 +146,14 @@
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 456}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 387}";
+			sepNavIntBoundsRect = "{{0, 0}, {811, 430}}";
+			sepNavSelRange = "{147, 0}";
+			sepNavVisRange = "{0, 375}";
 		};
 	};
 	3053AC6E109B7857006FCFE7 /* VERSION */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 462}}";
+			sepNavIntBoundsRect = "{{0, 0}, {811, 430}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 5}";
 		};
@@ -447,7 +458,7 @@
 		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
 		name = "BunnyCacherAppDelegate.m: 41";
 		rLen = 0;
-		rLoc = 780;
+		rLoc = 791;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 538;
@@ -457,10 +468,107 @@
 		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
 		name = "BunnyCacherAppDelegate.m: 41";
 		rLen = 0;
-		rLoc = 780;
+		rLoc = 791;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 538;
+	};
+	8B648E691114A05F0093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
+		name = "BunnyCacherAppDelegate.m: 41";
+		rLen = 0;
+		rLoc = 791;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 472;
+	};
+	8B648E881114A1590093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
+		name = "BunnyCacherAppDelegate.m: 41";
+		rLen = 0;
+		rLoc = 791;
+		rType = 0;
+		vrLen = 782;
+		vrLoc = 472;
+	};
+	8B648EB71114A3280093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		rLen = 0;
+		rLoc = 92;
+		rType = 0;
+	};
+	8B648EB81114A3280093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 6";
+		rLen = 0;
+		rLoc = 92;
+		rType = 0;
+		vrLen = 375;
+		vrLoc = 0;
+	};
+	8B648EBF1114A3330093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3053AC6E109B7857006FCFE7 /* VERSION */;
+		name = "VERSION: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 5;
+		vrLoc = 0;
+	};
+	8B648EC01114A3330093144B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 302CC88710CD8CCE00C49659 /* icon.png */;
+	};
+	8B648EC11114A3330093144B /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* BunnyCacher-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleDisplayName,
+		);
+		name = "/Users/holger/Documents/Software Development/PhoneGap/BunnyCacher/trunk/BunnyCacher-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	8B648EC21114A3330093144B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 302CC88610CD8CCE00C49659 /* Default.png */;
+	};
+	8B648EC31114A3330093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* BunnyCacherAppDelegate.h */;
+		name = "BunnyCacherAppDelegate.h: 13";
+		rLen = 0;
+		rLoc = 249;
+		rType = 0;
+		vrLen = 272;
+		vrLoc = 0;
+	};
+	8B648EC41114A3330093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
+		name = "BunnyCacherAppDelegate.m: 6";
+		rLen = 0;
+		rLoc = 110;
+		rType = 0;
+		vrLen = 495;
+		vrLoc = 0;
+	};
+	8B648EC51114A3330093144B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 9";
+		rLen = 0;
+		rLoc = 147;
+		rType = 0;
+		vrLen = 375;
+		vrLoc = 0;
 	};
 	8B7E567311148CC00021F45B /* Bunnycasher.html */ = {
 		isa = PBXFileReference;
@@ -557,7 +665,7 @@
 		fRef = 1D3623250D0F684500981E51 /* BunnyCacherAppDelegate.m */;
 		name = "BunnyCacherAppDelegate.m: 32";
 		rLen = 0;
-		rLoc = 536;
+		rLoc = 547;
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 323;
@@ -574,7 +682,7 @@
 		fRef = 1D3623240D0F684500981E51 /* BunnyCacherAppDelegate.h */;
 		name = "BunnyCacherAppDelegate.h: 13";
 		rLen = 0;
-		rLoc = 261;
+		rLoc = 249;
 		rType = 0;
 		vrLen = 272;
 		vrLoc = 0;
