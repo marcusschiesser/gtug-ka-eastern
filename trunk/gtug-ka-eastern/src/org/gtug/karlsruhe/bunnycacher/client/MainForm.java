@@ -1,11 +1,13 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
+import com.google.gwt.dev.util.UnitTestTreeLogger;
+import com.google.gwt.dom.client.Style.Unit;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
 import org.gtug.karlsruhe.phonegap.client.PositionSuccessCallback;
-
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
@@ -14,7 +16,7 @@ import com.googlecode.maps3.client.LatLng;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class MainForm extends DockPanel {
+public class MainForm extends DockLayoutPanel {
 	private Button newEggButton;
 	private Button updatePosButton;
 	private HorizontalPanel toolBarPanel;
@@ -22,8 +24,11 @@ public class MainForm extends DockPanel {
 	private InlineLabel debugLabel;
 	
 	public MainForm() {
+		super(Unit.EM);
+		setWidth("100%");
+		setHeight("100%");
 		toolBarPanel=new HorizontalPanel ();
-		add(toolBarPanel,NORTH);
+		addNorth(toolBarPanel, 2);
 		newEggButton =new Button("neues Ei verstecken",new ClickHandler() {			
 			public void onClick(ClickEvent event) {
 				new NewEggPopup().show();
@@ -36,10 +41,10 @@ public class MainForm extends DockPanel {
 			}
 		});
 		toolBarPanel.add(newEggButton);
-		toolBarPanel.add(updatePosButton);
+		toolBarPanel.add(updatePosButton); 
 		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
 		_map = new Map(actPos);
-		add(_map.getMap(), CENTER);
+		add(_map.getMap());
 		
 		debugLabel = new InlineLabel("Debug");
 		toolBarPanel.add(debugLabel);

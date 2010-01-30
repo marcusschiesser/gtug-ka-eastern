@@ -12,8 +12,8 @@ public class MapFactory {
 		opts.setCenter(latLng);
 		opts.setZoom(14);	
 		MapWidget map = new MapWidget(opts);
-		map.setWidth("500px");
-		map.setHeight("500px");
+		map.setWidth("100%");
+		map.setHeight("100%");
 		return map;
 	}
 	
