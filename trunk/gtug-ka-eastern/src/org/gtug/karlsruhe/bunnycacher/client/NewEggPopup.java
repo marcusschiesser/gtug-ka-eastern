@@ -1,6 +1,6 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
-import org.gtug.karlsruhe.bunnycacher.common.Egg;
+import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

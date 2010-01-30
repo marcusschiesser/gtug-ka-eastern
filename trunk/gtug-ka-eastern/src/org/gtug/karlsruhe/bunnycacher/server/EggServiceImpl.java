@@ -1,12 +1,13 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
+import java.util.logging.Logger;
+
 import javax.persistence.EntityManager;
 
-import org.gtug.karlsruhe.bunnycacher.client.EggService;
-import org.gtug.karlsruhe.bunnycacher.common.Egg;
+import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
+import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 /**
@@ -15,11 +16,15 @@ import com.google.inject.Singleton;
 @Singleton
 public class EggServiceImpl implements EggService {
 
+	private static final Logger logger = Logger.getLogger(EggServiceImpl.class
+			.getName());
+
 	@Inject
-	Provider<EntityManager> em;
+	EntityManager entityManager;
 
 	public void createEgg(Egg egg) {
-
+		entityManager.persist(egg);
+		logger.fine("Saved entity " + egg.getId());
 	}
 
 }

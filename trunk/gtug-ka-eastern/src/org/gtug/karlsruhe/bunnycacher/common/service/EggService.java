@@ -1,11 +1,12 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.common.service;
 
-import org.gtug.karlsruhe.bunnycacher.common.Egg;
+
+import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-@RemoteServiceRelativePath("egg")
+@RemoteServiceRelativePath("GWT.rpc")
 public interface EggService extends RemoteService {
 
 	void createEgg(Egg egg);

@@ -1,6 +1,6 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.common.service;
 
-import org.gtug.karlsruhe.bunnycacher.common.Egg;
+import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

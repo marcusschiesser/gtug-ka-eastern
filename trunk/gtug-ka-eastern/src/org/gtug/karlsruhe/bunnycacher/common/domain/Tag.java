@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycacher.common;
+package org.gtug.karlsruhe.bunnycacher.common.domain;
 
 import java.io.Serializable;
 import java.util.Date;
