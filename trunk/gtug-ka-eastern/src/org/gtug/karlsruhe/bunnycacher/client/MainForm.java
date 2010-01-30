@@ -14,8 +14,10 @@ import com.googlecode.maps3.client.Marker;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class MainForm extends DockPanel {
-	Button newEggButton;
-	HorizontalPanel toolBarPanel;
+	private Button newEggButton;
+	private Button updatePosButton;
+	private HorizontalPanel toolBarPanel;
+	private Map _map;
 
 	public MainForm() {
 		toolBarPanel=new HorizontalPanel ();
@@ -27,12 +29,18 @@ public class MainForm extends DockPanel {
 				//doAlert();
 			}
 		});
+		updatePosButton = new Button("update Pos", new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				// call this function to update the position
+				_map.updatePosition(LatLng.newInstance(49, 8.383));
+			}
+		});
 		toolBarPanel.add(newEggButton);
+		toolBarPanel.add(updatePosButton);
 		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
-		Map map = new Map(actPos);
-		add(map.getMap(), CENTER);
-		// call this function to update the position
-		map.updatePosition(LatLng.newInstance(49, 8.383));
+		_map = new Map(actPos);
+		add(_map.getMap(), CENTER);
 	}
 	
 	public native static void doAlert() /*-{
