@@ -20,7 +20,7 @@
 
   <!-- Inherit the Google Maps stuff                     -->
   <inherits name='com.googlecode.maps3.Maps3' />
-  <!-- Include Google Maps API -->
+  <!-- Include Google Maps API  -->
   <script src="http://maps.google.com/maps/api/js?sensor=false" />
 
 </module>
