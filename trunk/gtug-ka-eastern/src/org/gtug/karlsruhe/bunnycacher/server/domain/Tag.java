@@ -21,7 +21,7 @@ public class Tag implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key key;
-	
+
 	@Lob
 	private String message;
 
