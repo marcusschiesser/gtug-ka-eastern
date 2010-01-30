@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PhoneGapDelegate.h"
 
-@interface BunnyCacherAppDelegate : PhoneGapDelegate {
+@interface BunnyCacherAppDelegate : PhoneGapDelegate
+{
 }
 
 @end

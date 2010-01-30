@@ -11,23 +11,28 @@
 
 @implementation BunnyCacherAppDelegate
 
-- (id) init
+- (id)init
 {	
-	/** If you need to do any extra app-specific initialization, you can do it here
-	 *  -jm
-	 **/
     return [super init];
 }
 
-/**
- * This is main kick off after the app inits, the views and Settings are setup here.
- */
-- (void)applicationDidFinishLaunching:(UIApplication *)application
-{	
-	[ super applicationDidFinishLaunching:application ];
+- (void)dealloc
+{
+	[super dealloc];
 }
 
--(id) getCommandInstance:(NSString*)className
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application
+{	
+	[super applicationDidFinishLaunching:application];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+}
+
+
+- (id)getCommandInstance:(NSString*)className
 {
 	/** You can catch your own commands here, if you wanted to extend the gap: protocol, or add your
 	 *  own app specific protocol to it. -jm
@@ -35,17 +40,21 @@
 	return [super getCommandInstance:className];
 }
 
+
+#pragma mark -
+#pragma mark WebKit methods
+#
 /**
  Called when the webview finishes loading.  This stops the activity view and closes the imageview
  */
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView 
 {
-	return [ super webViewDidFinishLoad:theWebView ];
+	return [super webViewDidFinishLoad:theWebView];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)theWebView 
 {
-	return [ super webViewDidStartLoad:theWebView ];
+	return [super webViewDidStartLoad:theWebView];
 }
 
 /**
@@ -54,7 +63,9 @@
  */
 - (void)webView:(UIWebView *)theWebView didFailLoadWithError:(NSError *)error 
 {
-	return [ super webView:theWebView didFailLoadWithError:error ];
+	NSLog(@"ERROR LOADING, %@", [error localizedDescription]);
+	
+	return [super webView:theWebView didFailLoadWithError:error];
 }
 
 /**
@@ -64,18 +75,13 @@
  */
 - (BOOL)webView:(UIWebView *)theWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	return [ super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType ];
+	return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
 
-- (BOOL) execute:(InvokedUrlCommand*)command
+- (BOOL)execute:(InvokedUrlCommand *)command
 {
 	return [ super execute:command];
-}
-
-- (void)dealloc
-{
-	[ super dealloc ];
 }
 
 @end
