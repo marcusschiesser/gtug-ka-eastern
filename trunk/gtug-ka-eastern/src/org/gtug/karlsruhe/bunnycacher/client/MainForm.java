@@ -23,14 +23,12 @@ public class MainForm extends DockPanel {
 		toolBarPanel=new HorizontalPanel ();
 		add(toolBarPanel,NORTH);
 		newEggButton =new Button("neues Ei verstecken",new ClickHandler() {			
-			@Override
 			public void onClick(ClickEvent event) {
 				new NewEggPopup().show();
 				//doAlert();
 			}
 		});
 		updatePosButton = new Button("update Pos", new ClickHandler() {
-			@Override
 			public void onClick(ClickEvent event) {
 				// call this function to update the position
 				_map.updatePosition(LatLng.newInstance(49, 8.383));
