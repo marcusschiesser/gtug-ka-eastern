@@ -1,6 +1,8 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
-import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
+import java.util.List;
+
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
 import org.gtug.karlsruhe.phonegap.client.PositionSuccessCallback;
 
@@ -53,10 +55,10 @@ public class MainForm extends DockLayoutPanel {
 			public void onPosition(double lat, double lon) {
 				_map.updatePosition(LatLng.newInstance(lat, lon));
 				debugLabel.setText("Lat: " + lat + " Lon: " + lon);
-				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<Egg[]>() {
+				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<List<EggDto>>() {
 					
 					@Override
-					public void onSuccess(Egg[] eggs) {
+					public void onSuccess(List<EggDto> eggs) {
 						_map.setEggs(eggs);
 					}
 					

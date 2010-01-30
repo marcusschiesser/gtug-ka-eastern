@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycacher.common.domain;
+package org.gtug.karlsruhe.bunnycacher.server.domain;
 
 import java.io.Serializable;
 
@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.google.appengine.api.datastore.Key;
+
 @Entity
 public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key key;
 	
 	private String googleId;
 	
@@ -21,12 +23,12 @@ public class User implements Serializable {
     public User() {
     }
 
-	public Long getId() {
-		return id;
+    public Key getKey() {
+		return key;
 	}
-    
-    public void setId(Long id) {
-		this.id = id;
+
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
 	public String getGoogleId() {

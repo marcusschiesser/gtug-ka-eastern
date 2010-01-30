@@ -1,8 +1,9 @@
-package org.gtug.karlsruhe.bunnycacher.common.domain;
+package org.gtug.karlsruhe.bunnycacher.server.domain;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,38 +13,48 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
+
+import com.google.appengine.api.datastore.Key;
+
 @Entity
 public class Egg implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key key;
 	
 	private double latitude;
 	private double longitude;
-	
+
 	@Lob
 	private String hint;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User creator;
 
     
     public Egg() {
     }
     
-	public Long getId() {
-		return id;
-	}
-    
-    public void setId(Long id) {
-		this.id = id;
+    public Egg(EggDto eggDto) {
+    	this.latitude = eggDto.getLatitude();
+    	this.longitude = eggDto.getLongitude();
+    	this.hint = eggDto.getHint();
+    }
+
+    public Key getKey() {
+		return key;
 	}
 
-    public Egg(double latitude, double longitude, String hint) {
+	public void setKey(Key key) {
+		this.key = key;
+	}
+
+	public Egg(double latitude, double longitude, String hint) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;

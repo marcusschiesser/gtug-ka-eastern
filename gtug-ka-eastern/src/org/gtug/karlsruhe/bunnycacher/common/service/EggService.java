@@ -1,7 +1,9 @@
 package org.gtug.karlsruhe.bunnycacher.common.service;
 
 
-import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
+import java.util.List;
+
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -9,7 +11,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("GWT.rpc")
 public interface EggService extends RemoteService {
 
-	void createEgg(Egg egg);
-	Egg[] getEggsWithin(double latitude, double longitude);
+	void createEgg(EggDto egg);
+	
+	List<EggDto> getEggsWithin(double latitude, double longitude);
 	
 }
