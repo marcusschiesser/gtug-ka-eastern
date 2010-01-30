@@ -40,6 +40,7 @@ public class NewEggPopup extends DialogBox {
 				// direct RPC calls to http://bunnycacher.appspot.com/bunnycasher/GWT.rpc
 				ServiceDefTarget endpoint = (ServiceDefTarget)Application.eggService;
 				String rpcUrl = endpoint.getServiceEntryPoint();
+				Window.alert("rpcURL: " + rpcUrl);
 				if (!rpcUrl.contains("localhost")) {
 					// set new rpcURL
 					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycasher/GWT.rpc");
