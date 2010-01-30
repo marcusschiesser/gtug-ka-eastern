@@ -79,7 +79,7 @@
 
     <modules>
         <module>gtug-ka-eastern-war</module>
-        <!--<module>gtug-ka-eastern-apk</module>-->
+        <module>gtug-ka-eastern-apk</module>
     </modules>
 
 </project>
