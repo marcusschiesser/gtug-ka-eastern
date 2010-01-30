@@ -1,5 +1,7 @@
 package org.gtug.karlsruhe.bunnycasher.client;
 
+import org.gtug.karlsruhe.bunnycasher.common.Egg;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
@@ -23,7 +25,9 @@ public class NewEggPopup extends DialogBox {
 		Button ok = new Button("OK");
 		ok.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				//TOOD: daten an webservice übergeben
+				// TOOD: daten an webservice übergeben
+				Egg egg=new Egg(42.0, 43.0, "ein hint");
+				Gtug_ka_eastern.eggService.greetServer(egg, null);
 				NewEggPopup.this.hide();
 			}
 		});

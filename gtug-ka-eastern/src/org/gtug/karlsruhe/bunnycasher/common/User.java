@@ -3,6 +3,8 @@ package org.gtug.karlsruhe.bunnycasher.common;
 public class User {
 
 	private String id;
+	
+	public static User currentUser=new User();
 
 	public String getId() {
 		return id;
