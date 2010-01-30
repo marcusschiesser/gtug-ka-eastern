@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.googlecode.maps3.client.LatLng;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -19,7 +20,7 @@ public class NewEggPopup extends DialogBox {
 	private DockPanel panel;
 	private DialogBox myself = this;
 
-	public NewEggPopup() {
+	public NewEggPopup(final LatLng actPos) {
 		setText("neues Ei verstecken");
 		// Enable animation.
 		setAnimationEnabled(true);
@@ -29,7 +30,7 @@ public class NewEggPopup extends DialogBox {
 		ok.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
-				Egg egg=new Egg(42.0, 43.0, "ein hint");
+				Egg egg=new Egg(actPos.getLatitude(), actPos.getLongitude(), "ein hint");
 				Application.eggService.createEgg(egg, new AsyncCallback() {
 
 					@Override
