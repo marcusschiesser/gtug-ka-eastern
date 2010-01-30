@@ -29,11 +29,10 @@ public class MainForm extends DockPanel {
 		});
 		toolBarPanel.add(newEggButton);
 		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
-		final MapWidget map = MapFactory.createMap(actPos);
-		add(map, CENTER);
-		Marker position = MapFactory.createPosition(map, actPos);
+		Map map = new Map(actPos);
+		add(map.getMap(), CENTER);
 		// call this function to update the position
-		position.setPosition(LatLng.newInstance(49, 8.383));
+		map.updatePosition(LatLng.newInstance(49, 8.383));
 	}
 	
 	public native static void doAlert() /*-{
