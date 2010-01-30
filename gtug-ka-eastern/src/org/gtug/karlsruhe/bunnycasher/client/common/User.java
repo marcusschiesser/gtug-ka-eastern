@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycasher.common;
+package org.gtug.karlsruhe.bunnycasher.client.common;
 
 public class User {
 
