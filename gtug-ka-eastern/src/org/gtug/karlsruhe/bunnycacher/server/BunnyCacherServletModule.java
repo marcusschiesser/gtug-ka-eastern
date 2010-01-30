@@ -1,6 +1,6 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
-import org.gtug.karlsruhe.bunnycacher.client.EggService;
+import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 
 import com.google.inject.servlet.ServletModule;
 

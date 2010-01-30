@@ -1,5 +1,8 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
+import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
+import org.gtug.karlsruhe.bunnycacher.common.service.EggServiceAsync;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
