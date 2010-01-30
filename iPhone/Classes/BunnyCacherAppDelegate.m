@@ -3,17 +3,22 @@
 //  BunnyCacher
 //
 //  Created by Holger Wiedemann on 30.01.10.
-//  Copyright YellowMap AG 2010. All rights reserved.
+//  Copyright  2010. All rights reserved.
 //
 
 #import "BunnyCacherAppDelegate.h"
 #import "PhoneGapViewController.h"
 
+
 @implementation BunnyCacherAppDelegate
+
 
 - (id)init
 {	
-    return [super init];
+	if (self = [super init])
+	{
+	}
+	return self;
 }
 
 - (void)dealloc
@@ -40,6 +45,11 @@
 	return [super getCommandInstance:className];
 }
 
+- (BOOL)execute:(InvokedUrlCommand *)command
+{
+	return [super execute:command];
+}
+
 
 #pragma mark -
 #pragma mark WebKit methods
@@ -63,8 +73,6 @@
  */
 - (void)webView:(UIWebView *)theWebView didFailLoadWithError:(NSError *)error 
 {
-	NSLog(@"ERROR LOADING, %@", [error localizedDescription]);
-	
 	return [super webView:theWebView didFailLoadWithError:error];
 }
 
@@ -76,12 +84,6 @@
 - (BOOL)webView:(UIWebView *)theWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
 	return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
-}
-
-
-- (BOOL)execute:(InvokedUrlCommand *)command
-{
-	return [ super execute:command];
 }
 
 @end
