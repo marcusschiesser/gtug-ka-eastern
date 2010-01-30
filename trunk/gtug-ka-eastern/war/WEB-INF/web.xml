@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.gtug.eastern.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>org.gtug.karlsruhe.bunnycasher.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
