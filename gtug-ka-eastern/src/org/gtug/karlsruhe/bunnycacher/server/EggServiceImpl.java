@@ -1,5 +1,6 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -39,7 +40,11 @@ public class EggServiceImpl implements EggService {
 	@Override
 	public List<EggDto> getEggsWithin(double latitude, double longitude) {
 		Query query = entityManager.createQuery("SELECT egg FROM Egg egg");
-		return query.getResultList();
+		List<EggDto> eggDtos = new ArrayList<EggDto>();
+		for (Egg egg : (List<Egg>) query.getResultList()) {
+			eggDtos.add(new EggDto(egg.getLatitude(), egg.getLongitude(), egg.getHint()));
+		}
+		return eggDtos;
 	}
 
 }
