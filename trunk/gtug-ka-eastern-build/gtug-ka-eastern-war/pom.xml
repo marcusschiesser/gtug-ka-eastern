@@ -42,12 +42,6 @@
 
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>javax</groupId>-->
-<!--            <artifactId>javaee-web-api</artifactId>-->
-<!--            <version>6.0</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -79,11 +73,6 @@
 	      <artifactId>gwt-gadgets</artifactId>
 	      <version>1.0.3</version>
 	    </dependency>    
-<!--	    <dependency>-->
-<!--	      <groupId>com.google.gwt.google-apis</groupId>-->
-<!--	      <artifactId>gwt-ajaxloader</artifactId>-->
-<!--	      <version>1.0.0</version>-->
-<!--	    </dependency>  -->
 	    <dependency>
 	      <groupId>com.google.gwt</groupId>
 	      <artifactId>gwt-user</artifactId>
@@ -99,6 +88,11 @@
 	      <artifactId>guice-servlet</artifactId>
 	      <version>2.0</version>
 	    </dependency>
+	    <dependency>
+			<groupId>com.wideplay</groupId>
+			<artifactId>warp-persist</artifactId>
+			<version>1.0</version>
+	    </dependency>
 <!--	    <dependency>-->
 <!--	      <groupId>com.google.gwt</groupId>-->
 <!--	      <artifactId>gwt-soyc-vis</artifactId>-->
@@ -106,6 +100,18 @@
 <!--	    </dependency>-->
     </dependencies>
 
+	<repositories>
+		<repository>
+        <id>kamalook</id>
+        <url>http://maven.kamalook.de/</url>
+        <releases>
+           <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>        
+     </repository>
+	</repositories>
 
     <profiles>
         <profile>
