@@ -24,6 +24,7 @@ public class MainForm extends DockPanel {
 			}
 		});
 		toolBarPanel.add(newEggButton);
+		add(MapFactory.createMap(), CENTER);
 	}
 	
 	public native static void doAlert() /*-{
