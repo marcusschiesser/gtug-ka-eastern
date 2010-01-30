@@ -51,6 +51,7 @@ public class NewEggPopup extends DialogBox {
 					@Override
 					public void onFailure(Throwable caught) {
 						Notification.alert("Callback exception: " + caught.toString() + " : " + caught.getMessage(), "Error", ":("); // TODO: externalize strings
+						myself.hide();
 					}
 
 					@Override
