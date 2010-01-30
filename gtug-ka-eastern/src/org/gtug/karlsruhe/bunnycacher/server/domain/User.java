@@ -15,7 +15,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key key;
-	
+
 	private String googleId;
 	
 	public static User currentUser=new User();
