@@ -5,6 +5,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.googlecode.maps3.client.LatLng;
+import com.googlecode.maps3.client.LatLngBounds;
+import com.googlecode.maps3.client.MapWidget;
+import com.googlecode.maps3.client.Marker;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -24,7 +28,12 @@ public class MainForm extends DockPanel {
 			}
 		});
 		toolBarPanel.add(newEggButton);
-		add(MapFactory.createMap(), CENTER);
+		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
+		final MapWidget map = MapFactory.createMap(actPos);
+		add(map, CENTER);
+		Marker position = MapFactory.createPosition(map, actPos);
+		// call this function to update the position
+		position.setPosition(LatLng.newInstance(49, 8.383));
 	}
 	
 	public native static void doAlert() /*-{
