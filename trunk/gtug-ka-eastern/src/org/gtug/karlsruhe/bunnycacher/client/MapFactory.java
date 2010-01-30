@@ -23,4 +23,10 @@ public class MapFactory {
 		pos.setMap(map.getMapJSO());
 		return pos;
 	}
+	
+	public static Circle createCircle(MapWidget map, LatLng pos, double radius) {
+		Circle circle = Circle.newInstance(pos.getLatitude(), pos.getLongitude());
+		circle.setMap(map.getMapJSO());
+		return circle;
+	}
 }
