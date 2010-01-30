@@ -40,17 +40,6 @@ public class NewEggPopup extends DialogBox {
 				// TOOD: daten an webservice übergeben
 				EggDto egg=new EggDto(actPos.getLatitude(), actPos.getLongitude(), hintTextInput.getText());
 				
-				// when not running in development mode, i.e. within Phonegap
-				// the URL is a file-URL
-				// direct RPC calls to http://bunnycacher.appspot.com/bunnycasher/GWT.rpc
-				ServiceDefTarget endpoint = (ServiceDefTarget)Application.eggService;
-				String rpcUrl = endpoint.getServiceEntryPoint();
-				// Window.alert("rpcURL: " + rpcUrl);
-				if (rpcUrl.startsWith("file:")) {
-					// set new rpcURL
-					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycacher/GWT.rpc");
-				}
-				
 				Application.eggService.createEgg(egg, new AsyncCallback<Void>() {
 
 					@Override
