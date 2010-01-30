@@ -27,4 +27,9 @@ public class EggServiceImpl implements EggService {
 		logger.fine("Saved entity " + egg.getId());
 	}
 
+	@Override
+	public Egg[] getEggsWithin(double latitude, double longitude) {
+		return new Egg[]{};
+	}
+
 }
