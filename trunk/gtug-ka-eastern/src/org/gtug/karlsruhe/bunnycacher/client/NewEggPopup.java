@@ -43,7 +43,7 @@ public class NewEggPopup extends DialogBox {
 				// Window.alert("rpcURL: " + rpcUrl);
 				if (rpcUrl.startsWith("file:")) {
 					// set new rpcURL
-					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycasher/GWT.rpc");
+					endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycacher/GWT.rpc");
 				}
 				
 				Application.eggService.createEgg(egg, new AsyncCallback<Void>() {
