@@ -10,5 +10,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface EggService extends RemoteService {
 
 	void createEgg(Egg egg);
+	Egg[] getEggsWithin(double latitude, double longitude);
 	
 }
