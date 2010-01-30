@@ -30,8 +30,8 @@ public class Application implements EntryPoint {
      * service.
      */
     
-    public static LoginServiceAsync loginService = (LoginServiceAsync)createService(LoginService.class);
-    public static final EggServiceAsync eggService = (EggServiceAsync)createService(EggService.class);
+    public static LoginServiceAsync loginService = (LoginServiceAsync)updateEndpoint(GWT.create(LoginService.class));
+    public static final EggServiceAsync eggService = (EggServiceAsync)updateEndpoint(GWT.create(EggService.class));
 
     private LoginInfo loginInfo = null;
     private VerticalPanel loginPanel = new VerticalPanel();
@@ -43,9 +43,7 @@ public class Application implements EntryPoint {
 	 * Create a remote service proxy to talk to the server-side Greeting
 	 * service.
 	 */
-	private static Object createService(Class clazz) {
-		
-		Object service = GWT.create(clazz);
+	private static Object updateEndpoint(Object service) {
 		
 		// when not running in development mode, i.e. within Phonegap
 		// the URL is a file-URL
@@ -60,7 +58,7 @@ public class Application implements EntryPoint {
 		
 		return service;
 	}
-
+	
     /**
      * This is the entry point method.
      */
