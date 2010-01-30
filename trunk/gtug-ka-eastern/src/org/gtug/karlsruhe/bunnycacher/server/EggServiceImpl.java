@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
+import org.gtug.karlsruhe.bunnycacher.server.domain.Egg;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -27,7 +28,8 @@ public class EggServiceImpl implements EggService {
 	EntityManager entityManager;
 
 	@Transactional
-	public void createEgg(EggDto egg) {
+	public void createEgg(EggDto eggDto) {
+		Egg egg = new Egg(eggDto);
 		egg.setCreated(new Date());
 		entityManager.persist(egg);
 		logger.fine("Saved entity!");
