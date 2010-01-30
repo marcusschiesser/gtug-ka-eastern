@@ -5,24 +5,39 @@ import java.util.List;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 
+import com.google.gwt.user.client.Timer;
 import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.MapWidget;
 import com.googlecode.maps3.client.Marker;
 
 public class Map {
 
+	private static final int MIN_RADIUS = 200;
+	private static final int MAX_RADIUS = 220;
+
 	private MapWidget _mapWidget;
 	private Marker _position;
-	private Circle _radar;
+	private Ellipse _radar;
 	private LatLng _actPos;
+	private Timer _timer;
+	private double _radius;
 	private List<Marker> _eggs;
 	
 	public Map(LatLng actPos) {
 		_eggs = new LinkedList<Marker>();
 		_actPos = actPos;
+		_radius = MIN_RADIUS;
 		_mapWidget = MapFactory.createMap(actPos);
 		_position = MapFactory.createPosition(_mapWidget, actPos);
-		_radar = MapFactory.createCircle(_mapWidget, actPos, 0.1);
+		_timer = new Timer() {
+			@Override
+			public void run() {
+				drawRadar(_radius+=10);
+				if(_radius>MAX_RADIUS)
+					_radius = MIN_RADIUS;
+			}
+		};
+		_timer.scheduleRepeating(200);
 	}
 	
 	public MapWidget getMap() {
@@ -34,7 +49,6 @@ public class Map {
 		// call this function to update the position
 		_position.setPosition(actPos);
 		_mapWidget.getMapJSO().setCenter(actPos);
-		// draw radar
 	}
 	
 	public void setEggs(Egg[] eggs) {
@@ -54,7 +68,11 @@ public class Map {
 		return _actPos;
 	}
 	
-	private void drawRadar(LatLng actPos, double radius) {
+	private void drawRadar(double radius) {
+		if(_radar!=null) {
+			_radar.setMap(null);
+		}
+		_radar = MapFactory.createRadar(_mapWidget, _actPos, radius);
 	/*	function drawCircle(center, radius, color, width, complexity) { 
 		    var points = []; 
 		    var radians = Math.PI / 180; 

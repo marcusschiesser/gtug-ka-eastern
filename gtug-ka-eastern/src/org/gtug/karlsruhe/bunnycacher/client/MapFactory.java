@@ -33,8 +33,8 @@ public class MapFactory {
 		return pos;
 	}
 	
-	public static Circle createCircle(MapWidget map, LatLng pos, double radius) {
-		Circle circle = Circle.newInstance(pos.getLatitude(), pos.getLongitude());
+	public static Ellipse createRadar(MapWidget map, LatLng pos, double radius) {
+		Ellipse circle = Ellipse.newInstance(pos, 1.7*radius, radius, "#0000ff");
 		circle.setMap(map.getMapJSO());
 		return circle;
 	}
