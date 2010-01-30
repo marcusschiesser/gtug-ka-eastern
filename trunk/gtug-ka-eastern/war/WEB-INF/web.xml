@@ -6,17 +6,16 @@
 <web-app>
   
   <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>org.gtug.karlsruhe.bunnycasher.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/gtug_ka_eastern/greet</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
+    <servlet>
+        <servlet-name>org.gtug.karlsruhe.bunnycasher.bunnycasher EggService</servlet-name>
+        <servlet-class>org.gtug.karlsruhe.bunnycasher.server.EggServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>org.gtug.karlsruhe.bunnycasher.bunnycasher EggService</servlet-name>
+        <url-pattern>/bunnycasher/egg</url-pattern>
+    </servlet-mapping>
+
+    <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Gtug_ka_eastern.html</welcome-file>
   </welcome-file-list>
