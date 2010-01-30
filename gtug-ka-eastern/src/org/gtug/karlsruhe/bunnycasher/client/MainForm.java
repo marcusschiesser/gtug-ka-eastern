@@ -20,8 +20,14 @@ public class MainForm extends DockPanel {
 			@Override
 			public void onClick(ClickEvent event) {
 				new NewEggPopup().show();
+				//doAlert();
 			}
 		});
 		toolBarPanel.add(newEggButton);
 	}
+	
+	public native static void doAlert() /*-{
+		alert("ok");
+	}-*/;
+
 }
