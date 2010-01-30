@@ -1,14 +1,15 @@
 package org.gtug.karlsruhe.bunnycacher.client;
 
-import com.google.gwt.dev.util.UnitTestTreeLogger;
-import com.google.gwt.dom.client.Style.Unit;
+import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
 import org.gtug.karlsruhe.phonegap.client.PositionSuccessCallback;
+
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.googlecode.maps3.client.LatLng;
@@ -52,6 +53,18 @@ public class MainForm extends DockLayoutPanel {
 			public void onPosition(double lat, double lon) {
 				_map.updatePosition(LatLng.newInstance(lat, lon));
 				debugLabel.setText("Lat: " + lat + " Lon: " + lon);
+				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<Egg[]>() {
+					
+					@Override
+					public void onSuccess(Egg[] eggs) {
+						_map.setEggs(eggs);
+					}
+					
+					@Override
+					public void onFailure(Throwable caught) {
+						
+					}
+				});
 			}
 		});
 	}
