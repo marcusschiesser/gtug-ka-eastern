@@ -1,11 +1,11 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
@@ -35,9 +35,11 @@ public class EggServiceImpl implements EggService {
 		logger.fine("Saved entity!");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<EggDto> getEggsWithin(double latitude, double longitude) {
-		return new ArrayList<EggDto>();
+		Query query = entityManager.createQuery("SELECT egg FROM Egg egg");
+		return query.getResultList();
 	}
 
 }
