@@ -20,6 +20,15 @@ public class MapFactory {
 	public static Marker createPosition(MapWidget map, LatLng latLng) {
 		Marker pos = Marker.newInstance();
 		pos.setPosition(latLng);
+		pos.setIcon("icons/rabbiticon.png");
+		pos.setMap(map.getMapJSO());
+		return pos;
+	}
+	
+	public static Marker createEgg(MapWidget map, LatLng latLng) {
+		Marker pos = Marker.newInstance();
+		pos.setPosition(latLng);
+		pos.setIcon("icons/eggicon.png");
 		pos.setMap(map.getMapJSO());
 		return pos;
 	}
