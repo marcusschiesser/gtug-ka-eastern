@@ -4,6 +4,7 @@ import org.gtug.karlsruhe.bunnycasher.client.common.Egg;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DockPanel;
@@ -26,9 +27,18 @@ public class NewEggPopup extends DialogBox {
 		ok.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				// TOOD: daten an webservice übergeben
-				Egg egg=new Egg(42.0, 43.0, "ein hint");
-				Gtug_ka_eastern.eggService.createEgg(egg,null);
-				NewEggPopup.this.hide();
+				Egg egg = new Egg(42.0, 43.0, "ein hint");
+				Gtug_ka_eastern.eggService.createEgg(egg,
+						new AsyncCallback<Void>() {
+							@Override
+							public void onFailure(Throwable caught) {
+							}
+							@Override
+							public void onSuccess(Void result) {
+								NewEggPopup.this.hide();
+							}
+						}
+				);
 			}
 		});
 		TextBox text = new TextBox();
@@ -37,5 +47,4 @@ public class NewEggPopup extends DialogBox {
 		panel.add(text, DockPanel.SOUTH);
 		setWidget(panel);
 	}
-
 }
