@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycasher.client;
+package org.gtug.karlsruhe.bunnycacher.client;
 
 import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.MapOptions;
