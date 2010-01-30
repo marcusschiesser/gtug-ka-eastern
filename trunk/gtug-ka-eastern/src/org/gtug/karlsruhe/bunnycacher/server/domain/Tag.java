@@ -1,8 +1,9 @@
-package org.gtug.karlsruhe.bunnycacher.common.domain;
+package org.gtug.karlsruhe.bunnycacher.server.domain;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,36 +13,38 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.google.appengine.api.datastore.Key;
+
 @Entity
 public class Tag implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key key;
 	
 	@Lob
 	private String message;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Egg egg;
 
     public Tag() {
     }
 
-	public Long getId() {
-		return id;
+    public Key getKey() {
+		return key;
 	}
-    
-    public void setId(Long id) {
-		this.id = id;
+
+	public void setKey(Key key) {
+		this.key = key;
 	}
-    
+
     public String getMessage() {
 		return message;
 	}

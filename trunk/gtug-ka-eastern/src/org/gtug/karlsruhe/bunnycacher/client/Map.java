@@ -3,7 +3,7 @@ package org.gtug.karlsruhe.bunnycacher.client;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.gtug.karlsruhe.bunnycacher.common.domain.Egg;
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 
 import com.google.gwt.user.client.Timer;
 import com.googlecode.maps3.client.LatLng;
@@ -51,14 +51,14 @@ public class Map {
 		_mapWidget.getMapJSO().setCenter(actPos);
 	}
 	
-	public void setEggs(Egg[] eggs) {
+	public void setEggs(List<EggDto> eggs) {
 		// remove old eggs
 		for (Marker egg : _eggs) {
 			egg.setMap(null);
 		}
 		_eggs.clear();
 		// add new eggs
-		for (Egg egg : eggs) {
+		for (EggDto egg : eggs) {
 			Marker eggMarker = MapFactory.createEgg(_mapWidget, LatLng.newInstance(egg.getLatitude(), egg.getLongitude()));
 			_eggs.add(eggMarker);
 		}
