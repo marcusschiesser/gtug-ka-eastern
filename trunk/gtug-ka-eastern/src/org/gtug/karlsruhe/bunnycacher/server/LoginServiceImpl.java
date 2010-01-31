@@ -22,6 +22,7 @@ public class LoginServiceImpl implements LoginService {
 		this.httpServletRequest = httpServletRequest;
 	}
 
+
     public LoginInfo login(String requestUri) {
         UserService userService = UserServiceFactory.getUserService();
 
@@ -33,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
                 loginInfo.setLoggedIn(true);
                 loginInfo.setEmailAddress(user.getEmail());
                 loginInfo.setNickname(user.getNickname());
-                //loginInfo.setLogoutUrl(userService.createLogoutURL(requestUri));
+                // loginInfo.setLogoutUrl(userService.createLogoutURL(requestUri));
 
                 HttpSession session = httpServletRequest.get().getSession();
                 session.setAttribute("currentUser", user);
@@ -50,7 +51,8 @@ public class LoginServiceImpl implements LoginService {
             loginInfo.setLoggedIn(true);
             loginInfo.setEmailAddress("dummy@gmail.com");
             loginInfo.setNickname("Dummy");
-            // loginInfo.setLogoutUrl(userService.createLogoutURL(requestUri));
+            HttpSession session = httpServletRequest.get().getSession();
+            session.setAttribute("currentUser", user);
         }
 
         return loginInfo;
@@ -61,7 +63,16 @@ public class LoginServiceImpl implements LoginService {
 
         HttpSession session = httpServletRequest.get().getSession();
         User currentUser = (User) session.getAttribute("currentUser");
-        return currentUser.getUserId();
+        if (currentUser == null) {
+            // TODO: null or a check-method/exception combo instead?  
+            return "user not in session anymore!";
+        } else {
+            String userId = currentUser.getUserId();
+            if (userId == null) {
+                return "TODO: user exists but has no user ID?";
+            } else {
+                return userId;
+            }
+        }
     }
-
 }
