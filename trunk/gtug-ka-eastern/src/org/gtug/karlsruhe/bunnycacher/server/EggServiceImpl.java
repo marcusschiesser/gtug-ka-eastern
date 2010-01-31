@@ -13,33 +13,33 @@ import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.server.domain.Egg;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
+import com.google.inject.Provider;
 import com.wideplay.warp.persist.Transactional;
 
-/**
- * The server side implementation of the RPC service.
- */
-@Singleton
 public class EggServiceImpl implements EggService {
 
 	private static final Logger logger = Logger.getLogger(EggServiceImpl.class
 			.getName());
 
+	private Provider<EntityManager> entityManager;
+
 	@Inject
-	EntityManager entityManager;
+	public EggServiceImpl(Provider<EntityManager> entityManager) {
+		this.entityManager = entityManager;
+	}
 
 	@Transactional
 	public void createEgg(EggDto eggDto) {
 		Egg egg = new Egg(eggDto);
 		egg.setCreated(new Date());
-		entityManager.persist(egg);
+		entityManager.get().persist(egg);
 		logger.fine("Saved entity!");
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<EggDto> getEggsWithin(double latitude, double longitude) {
-		Query query = entityManager.createQuery("SELECT egg FROM Egg egg");
+		Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg");
 		List<EggDto> eggDtos = new ArrayList<EggDto>();
 		for (Egg egg : (List<Egg>) query.getResultList()) {
 			eggDtos.add(new EggDto(egg.getLatitude(), egg.getLongitude(), egg.getHint()));

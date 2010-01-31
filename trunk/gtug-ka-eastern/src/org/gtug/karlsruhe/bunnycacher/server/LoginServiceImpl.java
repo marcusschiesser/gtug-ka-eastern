@@ -1,18 +1,26 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
+import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
+
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
-import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+public class LoginServiceImpl implements LoginService {
 
-public class LoginServiceImpl extends RemoteServiceServlet implements
-        LoginService {
+	private Provider<HttpServletRequest> httpServletRequest;
+
+	@Inject
+	public LoginServiceImpl(Provider<HttpServletRequest> httpServletRequest) {
+		this.httpServletRequest = httpServletRequest;
+	}
 
     public LoginInfo login(String requestUri) {
         UserService userService = UserServiceFactory.getUserService();
@@ -27,8 +35,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
                 loginInfo.setNickname(user.getNickname());
                 //loginInfo.setLogoutUrl(userService.createLogoutURL(requestUri));
 
-                HttpServletRequest request = this.getThreadLocalRequest();
-                HttpSession session = request.getSession();
+                HttpSession session = httpServletRequest.get().getSession();
                 session.setAttribute("currentUser", user);
             } else {
                 loginInfo.setLoggedIn(false);
@@ -52,8 +59,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
     @Override
     public String getCurrentUserId() {
 
-        HttpServletRequest request = this.getThreadLocalRequest();
-        HttpSession session = request.getSession();
+        HttpSession session = httpServletRequest.get().getSession();
         User currentUser = (User) session.getAttribute("currentUser");
         return currentUser.getUserId();
     }
