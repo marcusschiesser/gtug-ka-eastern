@@ -31,6 +31,11 @@ public class Application implements EntryPoint {
     private Label loginLabel = new Label("Bitte log Dich mit Deinem Google Account ein.");
     private Anchor signInLink = new Anchor("Login");
 
+    /**
+     * Set to false in order to disable login.
+     */
+    private boolean loginDisabled = true;
+
 
     /**
      * Create a remote service proxy to talk to the server-side Greeting
@@ -53,29 +58,33 @@ public class Application implements EntryPoint {
     }
 
     /**
-     * This is the entry point method.
+     * The entry point method checks login status using login service, then shows login link
+     * if user is not logged in, else displays main application.
      */
     public void onModuleLoad() {
 
-        // Check login status using login service.
-        loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
-            public void onFailure(Throwable error) {
-                // TODO: replace with error handling once a valid Session is required.
-                GWT.log("Asynchronous call of LoginService.login failed to complete normally, " +
-                        "forwarding to application without valid user session anyway.", error);
-                loadMainForm();
-            }
-
-            public void onSuccess(LoginInfo result) {
-                loginInfo = result;
-                if (loginInfo.isLoggedIn()) {
+        if (loginDisabled) {
+            loadMainForm();
+        } else {
+            loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
+                public void onFailure(Throwable error) {
+                    // TODO: replace with error handling once a valid Session is required.
+                    GWT.log("Asynchronous call of LoginService.login failed to complete normally, " +
+                            "forwarding to application without valid user session anyway.", error);
                     loadMainForm();
-                } else {
-                    GWT.log("User is not loggend in, show login form.", null);
-                    loadLogin();
                 }
-            }
-        });
+
+                public void onSuccess(LoginInfo result) {
+                    loginInfo = result;
+                    if (loginInfo.isLoggedIn()) {
+                        loadMainForm();
+                    } else {
+                        GWT.log("User is not loggend in, show login form.", null);
+                        loadLogin();
+                    }
+                }
+            });
+        }
     }
 
     private void loadLogin() {
