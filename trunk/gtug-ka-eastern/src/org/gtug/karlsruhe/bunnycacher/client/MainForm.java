@@ -5,6 +5,7 @@ import java.util.List;
 import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
+import org.gtug.karlsruhe.phonegap.client.Position;
 import org.gtug.karlsruhe.phonegap.client.PositionCallback;
 
 import com.google.gwt.core.client.GWT;
@@ -46,9 +47,9 @@ public class MainForm extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		Geolocation.watchPosition( new PositionCallback(){
 			@Override
-			public void onPosition(double lat, double lon) {
-				map.updatePosition(LatLng.newInstance(lat, lon));
-				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<List<EggDto>>() {
+			public void onPosition(Position value) {
+				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
+				Application.eggService.getEggsWithin(value.getLatitude(), value.getLongitude(), new AsyncCallback<List<EggDto>>() {
 					
 					@Override
 					public void onSuccess(List<EggDto> eggs) {
