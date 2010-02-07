@@ -7,15 +7,15 @@ import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 
 import com.google.gwt.user.client.Timer;
 import com.googlecode.maps3.client.LatLng;
+import com.googlecode.maps3.client.MapOptions;
 import com.googlecode.maps3.client.MapWidget;
 import com.googlecode.maps3.client.Marker;
 
-public class Map {
+public class Map extends MapWidget {
 
 	private static final int MIN_RADIUS = 200;
 	private static final int MAX_RADIUS = 220;
 
-	private MapWidget _mapWidget;
 	private Marker _position;
 	private Ellipse _radar;
 	private LatLng _actPos;
@@ -24,11 +24,11 @@ public class Map {
 	private List<Marker> _eggs;
 	
 	public Map(LatLng actPos) {
+		super(MapFactory.createMapOptions(actPos));
 		_eggs = new LinkedList<Marker>();
 		_actPos = actPos;
 		_radius = MIN_RADIUS;
-		_mapWidget = MapFactory.createMap(actPos);
-		_position = MapFactory.createPosition(_mapWidget, actPos);
+		_position = MapFactory.createPosition(this, actPos);
 		_timer = new Timer() {
 			@Override
 			public void run() {
@@ -40,15 +40,11 @@ public class Map {
 		_timer.scheduleRepeating(200);
 	}
 	
-	public MapWidget getMap() {
-		return _mapWidget;
-	}
-	
 	public void updatePosition(LatLng actPos) {
 		_actPos = actPos;
 		// call this function to update the position
 		_position.setPosition(actPos);
-		_mapWidget.getMapJSO().setCenter(actPos);
+		this.getMapJSO().setCenter(actPos);
 	}
 	
 	public void setEggs(List<EggDto> eggs) {
@@ -59,7 +55,7 @@ public class Map {
 		_eggs.clear();
 		// add new eggs
 		for (EggDto egg : eggs) {
-			Marker eggMarker = MapFactory.createEgg(_mapWidget, LatLng.newInstance(egg.getLatitude(), egg.getLongitude()));
+			Marker eggMarker = MapFactory.createEgg(this, LatLng.newInstance(egg.getLatitude(), egg.getLongitude()));
 			_eggs.add(eggMarker);
 		}
 	}
@@ -72,7 +68,7 @@ public class Map {
 		if(_radar!=null) {
 			_radar.setMap(null);
 		}
-		_radar = MapFactory.createRadar(_mapWidget, _actPos, radius);
+		_radar = MapFactory.createRadar(this, _actPos, radius);
 	/*	function drawCircle(center, radius, color, width, complexity) { 
 		    var points = []; 
 		    var radians = Math.PI / 180; 

@@ -19,7 +19,15 @@ public class MapFactory {
 		map.setHeight("100%");
 		return map;
 	}
-
+	
+	public static MapOptions createMapOptions(LatLng latLng) {
+		MapOptions opts = MapOptions.newInstance();
+		opts.setMapTypeId();
+		opts.setCenter(latLng);
+		opts.setZoom(14);
+		return opts;
+	}
+	
 	public static Marker createPosition(MapWidget map, LatLng latLng) {
 		Marker pos = Marker.newInstance();
 		pos.setPosition(latLng);

@@ -1,0 +1,164 @@
+/*
+ Application-wide styles
+ 
+ TODO:
+ move this file to org.gtug.karlsruhe.bunnycacher.client.res and 
+ do the steps explained in org.gtug.karlsruhe.bunnycacher.client.res.Resources
+ when GWT supports -webkit CSS rules.
+*/
+
+.cardFace {
+  	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+	-webkit-backface-visibility: hidden;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	
+}
+.cardFace * {
+	-webkit-backface-visibility: hidden;
+}
+.cardFaceFront {
+	color: rgb(78,150,249);
+	background-color: rgb(34,65,108);
+}
+.cardFaceBack {
+	color: rgb(34,65,108);
+	background-color: rgba(78,150,249,0.5);
+	-webkit-transform: rotateY(180deg);
+}
+.cardContainer {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-perspective: 900;
+}
+.cardCard {
+	-webkit-transform-style: preserve-3d;	
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-duration: 1.0s;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}
+.cardCard.cardCardFlipped {
+	-webkit-transform: rotateY(180deg);
+}
+
+.gwt-Button {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #101010;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  border: 3px solid #282726;
+  background: -webkit-gradient( linear, left top, left bottom, from(#e2e2e2), to(#8c8a88), color-stop(0.5, #acadae), color-stop(0.5, #82807e) );
+  margin: 0 0 3px 0;
+  text-shadow: 0px 1px 0 #cecece;
+  -webkit-background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
+
+.gwt-Button:hover,
+.gwt-Button:focus,
+.gwt-Button:active {
+  color: #fff;
+  text-shadow: none;
+  border-color: #10006d;
+  background: -webkit-gradient( linear, left top, left bottom, from(#aaaee5), to(#10006d), color-stop(0.5, #1F3B97), color-stop(0.5, #081f6f) );
+}
+
+.okButton {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  border: 3px solid #04c10d;
+  background: -webkit-gradient( linear, left top, left bottom, from(#00751e), color-stop(0.5, #039831), color-stop(0.5, #039831), to(#007e2c) );
+  margin: 0 0 3px 0;
+  text-shadow: 0px 1px 0 #323232;
+  -webkit-background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  position: absolute;
+  left: 3px;
+  bottom: 3px;
+}
+.okButton:hover,
+.okButton:focus,
+.okButton:active {
+  color: #fff;
+  text-shadow: none;
+  border-color: #003c03;
+  background: -webkit-gradient( linear, left top, left bottom, from(#008d24), color-stop(0.5, #00c33c), color-stop(0.5, #00d23b), to(#00cb48) );
+}
+
+
+.cancelButton {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  border: 3px solid #a60101;
+  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
+  margin: 0 0 3px 0;
+  text-shadow: 0px 1px 0 #323232;
+  -webkit-background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+}
+.cancelButton:hover,
+.cancelButton:focus,
+.canceButton:active {
+  color: #fff;
+  text-shadow: none;
+  border-color: #3e0000;
+  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
+}
+
+
+.mainPanel {
+	position: absolute;
+	top: 35px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0;
+	margin:0;
+}
+.topToolbar {
+	background: -webkit-gradient( linear, left top, left bottom, from(#717171), to(#151515), color-stop(.1, #4d4d4d), color-stop(0.45, #252525), color-stop(0.455, #000), color-stop(0.555, #252525) );
+	color: white;
+	display:block;
+	position:absolute;
+	height:35px;
+	top:0;
+	left:0;
+	right:0;
+}
+.topToolbar h1 {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 1.3em;
+	font-weight: bold;
+ 	text-align: center;
+	text-overflow: ellipsis;
+	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
+	padding: 0;
+	margin:0;
+	line-height:1.7em;
+}
+
+
+

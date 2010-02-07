@@ -1,0 +1,35 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.canvas {
+			background: #000;
+			background: rgba(0, 0, 0, 0.75);
+			padding: 5px;
+		}
+		.hint {
+			font-weight: bold;
+			color: #fff;
+		}
+		.hintInput {
+			width: 97%;
+			height: 3em;
+		}
+	</ui:style>
+	
+	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources" field="resources" />
+	
+	<g:HTMLPanel>
+		<g:HTMLPanel styleName='topToolbar'>
+			<h1>Osterei verstecken</h1>
+			<g:Button ui:field='cancelButton' styleName='cancelButton'>Abbruch</g:Button>
+			<g:Button ui:field='okButton' styleName='okButton'>OK</g:Button>
+		</g:HTMLPanel>
+	   <g:HTMLPanel width='100%'  styleName='mainPanel {style.canvas}'>
+	     <div class='{style.hint}'>Hier kannst Du ein Osterei, das Du an der aktuellen Position versteckt hast, für andere zum Finden eintragen. <br /><br />
+	     Gib einen Hinweis für die Suchenden an:</div>
+	     <g:TextArea ui:field="hintText" styleName='{style.hintInput}'></g:TextArea>
+	   </g:HTMLPanel>
+   </g:HTMLPanel>
+
+</ui:UiBinder>

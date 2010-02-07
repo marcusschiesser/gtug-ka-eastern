@@ -2,12 +2,17 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.StyleInjector;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggServiceAsync;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
@@ -62,7 +67,13 @@ public class Application implements EntryPoint {
      * if user is not logged in, else displays main application.
      */
     public void onModuleLoad() {
-
+    	// Inject global styles.
+//        Resources.INSTANCE.style().ensureInjected();
+		// Get rid of scrollbars, and clear out the window's built-in margin,
+		// because we want to take advantage of the entire client area.
+		Window.enableScrolling(false);
+		Window.setMargin("0px");
+		
         if (loginDisabled) {
             loadMainForm();
         } else {
@@ -92,10 +103,11 @@ public class Application implements EntryPoint {
         signInLink.setHref(loginInfo.getLoginUrl());
         loginPanel.add(loginLabel);
         loginPanel.add(signInLink);
-        RootPanel.get("main").add(loginPanel);
+        RootLayoutPanel.get().add(loginPanel);
     }
 
     private void loadMainForm() {
-        RootPanel.get("main").add(new MainForm());
+    	
+    	RootLayoutPanel.get().add(new MainForm());
     }
 }

@@ -2,54 +2,57 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import java.util.List;
 
+import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
-import org.gtug.karlsruhe.phonegap.client.PositionSuccessCallback;
+import org.gtug.karlsruhe.phonegap.client.PositionCallback;
 
-import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiFactory;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.InlineLabel;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class MainForm extends DockLayoutPanel {
-	private Button newEggButton;
-	private HorizontalPanel toolBarPanel;
-	private Map _map;
+public class MainForm extends Composite {
+	private static MainFormUiBinder uiBinder = GWT.create(MainFormUiBinder.class);
+
+	interface MainFormUiBinder extends UiBinder<Widget, MainForm> {
+	}
+	
+	@UiField
+	Map map;
+	
+	@UiField
+	HasClickHandlers newEggButton;
+	
+	@UiField(provided = true)
+	final Resources resources = Resources.INSTANCE;
+	
+	@UiField
+	NewEggView newEggView;
 	
 	public MainForm() {
-		super(Unit.PX);
-		setWidth("100%");
-		setHeight("100%");
-		toolBarPanel = new HorizontalPanel();
-		toolBarPanel.setStyleName("top-toolbar");
-		addNorth(toolBarPanel, 39);
-		newEggButton = new Button("neues Ei verstecken",new ClickHandler() {			
-			public void onClick(ClickEvent event) {
-				new NewEggPopup(_map.getPosition()).show();
-			}
-		});
-		newEggButton.getElement().setId("egg-button");
-		toolBarPanel.add(newEggButton);
-		LatLng actPos = LatLng.newInstance(49.001971,8.38304);
-		_map = new Map(actPos);
-		add(_map.getMap());
-		
-		Geolocation.watchPosition( new PositionSuccessCallback(){
+		initWidget(uiBinder.createAndBindUi(this));
+		Geolocation.watchPosition( new PositionCallback(){
+			@Override
 			public void onPosition(double lat, double lon) {
-				_map.updatePosition(LatLng.newInstance(lat, lon));
+				map.updatePosition(LatLng.newInstance(lat, lon));
 				Application.eggService.getEggsWithin(lat,lon, new AsyncCallback<List<EggDto>>() {
 					
 					@Override
 					public void onSuccess(List<EggDto> eggs) {
-						_map.setEggs(eggs);
+						map.setEggs(eggs);
 					}
 					
 					@Override
@@ -61,4 +64,24 @@ public class MainForm extends DockLayoutPanel {
 		});
 	}
 
+	@UiHandler("newEggButton")
+	public void onClick(ClickEvent event) {
+		newEggView.setPosition(map.getPosition());
+		this.flipCard();
+	}
+	@UiFactory Map makeMap() {
+		return new Map(LatLng.newInstance(49.001971,8.38304));
+	}
+	@UiFactory NewEggView makeNewEggView() {
+		return new NewEggView(this);
+	}
+
+	public void flipCard() {
+		Element card = Document.get().getElementById("card");
+		if (card.getClassName().equals("cardCard")) {
+			card.setClassName("cardCard cardCardFlipped");
+		} else {
+			card.setClassName("cardCard");
+		}
+	}
 }
