@@ -3,4 +3,6 @@
 	<inherits name='com.google.gwt.user.User' />
 
 	<source path='client' />
+	
+	<script src='phonegap_mock.js' />
 </module>

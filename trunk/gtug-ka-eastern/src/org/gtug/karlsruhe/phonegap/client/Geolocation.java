@@ -9,7 +9,7 @@ public class Geolocation extends JavaScriptObject {
 
 	/** */
 	public static native int watchPosition(
-			PositionSuccessCallback successCallback) /*-{
+			PositionCallback successCallback) /*-{
 		return $wnd.navigator.geolocation.watchPosition(function(position) {
 			function isPositionChanged(oldPosition, newPosition){ // TODO: refactor: move this to GWT code, not native JavaScript code
 				// http://www.movable-type.co.uk/scripts/latlong.html
@@ -43,7 +43,7 @@ public class Geolocation extends JavaScriptObject {
 						},
 						timestamp : position.timestamp
 					};
-					successCallback.@org.gtug.karlsruhe.phonegap.client.PositionSuccessCallback::onPosition(DD)(position.coords.latitude, position.coords.longitude);
+					successCallback.@org.gtug.karlsruhe.phonegap.client.PositionCallback::onPosition(DD)(position.coords.latitude, position.coords.longitude);
 				}
 			}
 		});
