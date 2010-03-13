@@ -7,7 +7,6 @@ import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 
 import com.google.gwt.user.client.Timer;
 import com.googlecode.maps3.client.LatLng;
-import com.googlecode.maps3.client.MapOptions;
 import com.googlecode.maps3.client.MapWidget;
 import com.googlecode.maps3.client.Marker;
 

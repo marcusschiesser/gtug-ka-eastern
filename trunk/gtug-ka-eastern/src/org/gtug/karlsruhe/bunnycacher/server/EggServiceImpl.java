@@ -47,4 +47,16 @@ public class EggServiceImpl implements EggService {
 		return eggDtos;
 	}
 
+	@Override
+	public Integer reserveEid() {
+		// TODO Auto-generated method stub
+		return 42;
+	}
+
+	@Override
+	public void createTag(Integer eid, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

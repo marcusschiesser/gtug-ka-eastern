@@ -2,17 +2,14 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggServiceAsync;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
@@ -58,7 +55,7 @@ public class Application implements EntryPoint {
             // set new rpcURL
             endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycacher/GWT.rpc");
         }
-
+    
         return service;
     }
 
