@@ -16,6 +16,8 @@ public interface EggService extends RemoteService {
 	void createTag(Integer eid, String message);
 	
 	Integer reserveEid();
+	
+	void foundEgg(EggDto egg, String message);
 
 	List<EggDto> getEggsWithin(double minLat, double maxLat, double minLng,
 			double maxLng);

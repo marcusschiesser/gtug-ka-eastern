@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.LatLngBounds;
+import com.googlecode.maps3.client.MapEventType;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -47,11 +48,9 @@ public class MainForm extends Composite {
 	
 	public MainForm() {
 		initWidget(uiBinder.createAndBindUi(this));
-		Geolocation.watchPosition( new PositionCallback(){
+		map.addListener(MapEventType.TILESLOADED, new Runnable() {
 			@Override
-			public void onPosition(Position value) {
-				newEggButton.setEnabled(true);
-				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
+			public void run() {
 				LatLngBounds bounds = map.getMapJSO().getBounds();
 			    double minLat = bounds.getSouthWest().getLatitude();
 			    double maxLat = bounds.getNorthEast().getLatitude();
@@ -69,6 +68,13 @@ public class MainForm extends Composite {
 						
 					}
 				});
+			}
+		});
+		Geolocation.watchPosition( new PositionCallback(){
+			@Override
+			public void onPosition(Position value) {
+				newEggButton.setEnabled(true);
+				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
 			}
 		});
 	}

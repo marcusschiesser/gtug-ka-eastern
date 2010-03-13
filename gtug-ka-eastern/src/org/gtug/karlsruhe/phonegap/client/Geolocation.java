@@ -6,6 +6,17 @@ public class Geolocation extends JavaScriptObject {
 	/** Required for Overlay types */
 	protected Geolocation() {
 	}
+	
+	public static native double distance(double lat1, double lon1, double lat2, double lon2) /*-{
+		var R = 6371, // km
+		lat1 = lat1  * Math.PI / 180, 
+		lon1 = lon1 * Math.PI / 180, 
+		lat2 = lat2  * Math.PI / 180, 
+		lon2 = lon2 * Math.PI / 180; 
+	return Math.acos(Math.sin(lat1)*Math.sin(lat2) + 
+      Math.cos(lat1)*Math.cos(lat2) *
+      Math.cos(lon2-lon1)) * R;
+	}-*/;
 
 	/** */
 	public static native int watchPosition(
