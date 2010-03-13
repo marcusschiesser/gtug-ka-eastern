@@ -10,6 +10,7 @@ public class EggDto implements Serializable {
 	private Date created;
 	private String creator;
 	private String hint;
+	private Integer eid;
 
 	public EggDto() {
 		
@@ -60,6 +61,14 @@ public class EggDto implements Serializable {
 
 	public void setHint(String hint) {
 		this.hint = hint;
+	}
+
+	public void setEid(Integer eid) {
+		this.eid = eid;
+	}
+
+	public Integer getEid() {
+		return eid;
 	}
 
 }

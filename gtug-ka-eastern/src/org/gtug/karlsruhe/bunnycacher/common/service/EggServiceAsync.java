@@ -11,5 +11,9 @@ public interface EggServiceAsync {
 	void createEgg(EggDto egg, AsyncCallback<Void> callback);
 
 	void getEggsWithin(double latitude, double longitude, AsyncCallback<List<EggDto>> callback);
+	
+	void reserveEid(AsyncCallback<Integer> callback);
+
+	void createTag(Integer eid, String message, AsyncCallback<Void> callback);
 
 }
