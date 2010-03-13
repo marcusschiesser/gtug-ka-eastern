@@ -65,4 +65,10 @@ public class EggServiceImpl implements EggService {
 		
 	}
 
+	@Override
+	public void foundEgg(EggDto egg, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:app="urn:import:org.gtug.karlsruhe.bunnycacher.client">
+	<ui:style>
+		
+	</ui:style>
+
+	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources"
+		field="resources" />
+
+	<g:PopupPanel ui:field='popup'>
+		<g:Label ui:field='hintLabel'></g:Label>
+		<g:Button ui:field='foundButton' styleName='foundButton'>Ja, Ei gefunden!</g:Button>
+	</g:PopupPanel>
+
+</ui:UiBinder>

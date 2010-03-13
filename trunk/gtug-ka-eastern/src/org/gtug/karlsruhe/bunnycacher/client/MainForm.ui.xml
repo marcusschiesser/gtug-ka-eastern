@@ -18,8 +18,8 @@
 			<div class="cardFaceFront cardFace">
 				<g:HTMLPanel styleName='topToolbar'>
 					<h1>BunnyCacher</h1>
-					<g:Button ui:field='newEggButton' addStyleNames='{style.newEgg}' enabled='false'>
-						Osterei verstecken
+					<g:Button ui:field='newEggButton' addStyleNames='{style.newEgg}'  enabled='false'>
+						Ei verstecken
 					</g:Button>
 				</g:HTMLPanel>
 				<app:Map ui:field='map' styleName='mainPanel'></app:Map>
