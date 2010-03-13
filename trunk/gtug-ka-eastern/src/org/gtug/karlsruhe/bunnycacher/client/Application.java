@@ -24,7 +24,7 @@ public class Application implements EntryPoint {
     public static final EggServiceAsync eggService = (EggServiceAsync) updateEndpoint(GWT.create(EggService.class));
 
     // private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
-    private static String baseUrl = "http://bunnycasher-dev.appspot.com/bunnycacher";
+    private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
 
     /**
      * Create a remote service proxy to talk to the server-side Greeting
