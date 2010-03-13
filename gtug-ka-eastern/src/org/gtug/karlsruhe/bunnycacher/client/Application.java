@@ -3,13 +3,8 @@ package org.gtug.karlsruhe.bunnycacher.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggServiceAsync;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
@@ -28,17 +23,13 @@ public class Application implements EntryPoint {
     public static LoginServiceAsync loginService = (LoginServiceAsync) updateEndpoint(GWT.create(LoginService.class));
     public static final EggServiceAsync eggService = (EggServiceAsync) updateEndpoint(GWT.create(EggService.class));
 
-    private LoginInfo loginInfo = null;
-    private VerticalPanel loginPanel = new VerticalPanel();
-    private Label loginLabel = new Label("Bitte log Dich mit Deinem Google Account ein.");
-    private Anchor signInLink = new Anchor("Login");
-
     /**
      * Set to false in order to disable login.
      */
     private boolean loginDisabled = false;
 
-    private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
+    // private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
+    private static String baseUrl = "http://bunnycasher-dev.appspot.com/bunnycacher";
 
     /**
      * Create a remote service proxy to talk to the server-side Greeting
@@ -56,7 +47,7 @@ public class Application implements EntryPoint {
             // set new rpcURL
             endpoint.setServiceEntryPoint(baseUrl + "/GWT.rpc");
         }
-    
+
         return service;
     }
 
@@ -65,52 +56,18 @@ public class Application implements EntryPoint {
      * if user is not logged in, else displays main application.
      */
     public void onModuleLoad() {
-    	// Inject global styles.
+        // Inject global styles.
 //        Resources.INSTANCE.style().ensureInjected();
-		// Get rid of scrollbars, and clear out the window's built-in margin,
-		// because we want to take advantage of the entire client area.
-		Window.enableScrolling(false);
-		Window.setMargin("0px");
-		
-        if (loginDisabled) {
-            loadMainForm();
-        } else {
-            String hostPageBaseUrl = GWT.getHostPageBaseURL();
-            if ( hostPageBaseUrl.startsWith("file:") ) {
-                // TODO: maybe append the path-info?
-                hostPageBaseUrl = baseUrl;
-            }
-            loginService.login(hostPageBaseUrl, new AsyncCallback<LoginInfo>() {
-                public void onFailure(Throwable error) {
-                    // TODO: replace with error handling once a valid Session is required.
-                    GWT.log("Asynchronous call of LoginService.login failed to complete normally, " +
-                            "forwarding to application without valid user session anyway.", error);
-                    loadMainForm();
-                }
+        // Get rid of scrollbars, and clear out the window's built-in margin,
+        // because we want to take advantage of the entire client area.
+        Window.enableScrolling(false);
+        Window.setMargin("0px");
 
-                public void onSuccess(LoginInfo result) {
-                    loginInfo = result;
-                    if (loginInfo.isLoggedIn()) {
-                        loadMainForm();
-                    } else {
-                        GWT.log("User is not loggend in, show login form.", null);
-                        loadLogin();
-                    }
-                }
-            });
-        }
-    }
-
-    private void loadLogin() {
-        // Assemble login panel.
-        signInLink.setHref(loginInfo.getLoginUrl());
-        loginPanel.add(loginLabel);
-        loginPanel.add(signInLink);
-        RootLayoutPanel.get().add(loginPanel);
+        loadMainForm();
     }
 
     private void loadMainForm() {
-    	
-    	RootLayoutPanel.get().add(new MainForm());
+
+        RootLayoutPanel.get().add(new MainForm());
     }
 }

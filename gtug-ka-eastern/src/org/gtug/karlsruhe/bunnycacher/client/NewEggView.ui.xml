@@ -26,6 +26,7 @@
 			<g:Button ui:field='okButton' styleName='okButton'>OK</g:Button>
 		</g:HTMLPanel>
 	   <g:HTMLPanel width='100%'  styleName='mainPanel {style.canvas}'>
+         <div ui:field='loginPrompt' class="{style.text}"/>
 	     <div class='{style.text}'>Dein Ei bekommt die Ei-D: <span ui:field='eidSpan'/>. Schreib Sie auf das Ei und verstecke es gut an der aktuellen Position.</div>
 	     <br /><br />
 	     <div class='{style.text}'>Gib hier einen Hinweis für den Sucher ein:</div>
