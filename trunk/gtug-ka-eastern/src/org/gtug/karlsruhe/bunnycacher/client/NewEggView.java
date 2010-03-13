@@ -66,7 +66,7 @@ public class NewEggView extends Composite {
             }
         });
 
-        Application.loginService.login(GWT.getHostPageBaseURL(), new AsyncCallbackImplementation<LoginInfo>() {
+        Application.loginService.getLoginInfo(GWT.getHostPageBaseURL(), new AsyncCallbackImplementation<LoginInfo>() {
             @Override
             public void onSuccess(LoginInfo result) {
                 if (!result.isLoggedIn()) {

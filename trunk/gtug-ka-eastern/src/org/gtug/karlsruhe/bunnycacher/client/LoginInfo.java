@@ -3,7 +3,7 @@ package org.gtug.karlsruhe.bunnycacher.client;
 import java.io.Serializable;
 
 /**
- * Result object for the {@link org.gtug.karlsruhe.bunnycacher.common.service.LoginService#login(String)} method.
+ * Result object for the {@link org.gtug.karlsruhe.bunnycacher.common.service.LoginService#getLoginInfo(String)} method.
  * <p/>
  * Copied from the <a href="http://code.google.com/intl/de-DE/webtoolkit/doc/latest/tutorial/appengine.html#user">
  * GWT appengine tutorial</a>.

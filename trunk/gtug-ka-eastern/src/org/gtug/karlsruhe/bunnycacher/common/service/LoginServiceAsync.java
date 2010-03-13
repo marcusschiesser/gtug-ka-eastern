@@ -5,7 +5,6 @@ import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
 
 public interface LoginServiceAsync {
 
-    public void login(String requestUri, AsyncCallback<LoginInfo> async);
+    public void getLoginInfo(String requestUri, AsyncCallback<LoginInfo> async);
 
-    void getCurrentUserId(AsyncCallback<String> async);
 }
