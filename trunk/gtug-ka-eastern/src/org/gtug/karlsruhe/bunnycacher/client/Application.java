@@ -23,11 +23,6 @@ public class Application implements EntryPoint {
     public static LoginServiceAsync loginService = (LoginServiceAsync) updateEndpoint(GWT.create(LoginService.class));
     public static final EggServiceAsync eggService = (EggServiceAsync) updateEndpoint(GWT.create(EggService.class));
 
-    /**
-     * Set to false in order to disable login.
-     */
-    private boolean loginDisabled = false;
-
     // private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
     private static String baseUrl = "http://bunnycasher-dev.appspot.com/bunnycacher";
 
@@ -47,7 +42,6 @@ public class Application implements EntryPoint {
             // set new rpcURL
             endpoint.setServiceEntryPoint(baseUrl + "/GWT.rpc");
         }
-
         return service;
     }
 
@@ -62,12 +56,6 @@ public class Application implements EntryPoint {
         // because we want to take advantage of the entire client area.
         Window.enableScrolling(false);
         Window.setMargin("0px");
-
-        loadMainForm();
-    }
-
-    private void loadMainForm() {
-
         RootLayoutPanel.get().add(new MainForm());
     }
 }
