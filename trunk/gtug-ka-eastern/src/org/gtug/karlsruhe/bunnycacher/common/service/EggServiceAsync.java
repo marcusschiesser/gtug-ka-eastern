@@ -10,7 +10,7 @@ public interface EggServiceAsync {
 
 	void createEgg(EggDto egg, AsyncCallback<Void> callback);
 
-	void getEggsWithin(double latitude, double longitude, AsyncCallback<List<EggDto>> callback);
+	void getEggsWithin(double minLat, double maxLat, double minLng, double maxLng, AsyncCallback<List<EggDto>> callback);
 	
 	void reserveEid(AsyncCallback<Integer> callback);
 
