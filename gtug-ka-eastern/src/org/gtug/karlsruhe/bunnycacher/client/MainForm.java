@@ -21,6 +21,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
+import com.googlecode.maps3.client.LatLngBounds;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -49,7 +50,12 @@ public class MainForm extends Composite {
 			@Override
 			public void onPosition(Position value) {
 				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
-				Application.eggService.getEggsWithin(value.getLatitude(), value.getLongitude(), new AsyncCallback<List<EggDto>>() {
+				LatLngBounds bounds = map.getMapJSO().getBounds();
+			    double minLat = bounds.getSouthWest().getLatitude();
+			    double maxLat = bounds.getNorthEast().getLatitude();
+			    double minLng = bounds.getSouthWest().getLongitude();
+			    double maxLng = bounds.getNorthEast().getLongitude();
+				Application.eggService.getEggsWithin(minLat, maxLat, minLng, maxLng, new AsyncCallback<List<EggDto>>() {
 					
 					@Override
 					public void onSuccess(List<EggDto> eggs) {

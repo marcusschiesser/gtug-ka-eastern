@@ -38,7 +38,7 @@ public class EggServiceImpl implements EggService {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<EggDto> getEggsWithin(double latitude, double longitude) {
+	public List<EggDto> getEggsWithin(double minLat, double maxLat, double minLng, double maxLng) {
 		Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg");
 		List<EggDto> eggDtos = new ArrayList<EggDto>();
 		for (Egg egg : (List<Egg>) query.getResultList()) {
