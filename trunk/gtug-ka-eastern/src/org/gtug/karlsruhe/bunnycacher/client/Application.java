@@ -36,8 +36,9 @@ public class Application implements EntryPoint {
     /**
      * Set to false in order to disable login.
      */
-    private boolean loginDisabled = true;
+    private boolean loginDisabled = false;
 
+    private static String baseUrl = "http://bunnycacher.appspot.com/bunnycacher";
 
     /**
      * Create a remote service proxy to talk to the server-side Greeting
@@ -53,7 +54,7 @@ public class Application implements EntryPoint {
         // Window.alert("rpcURL: " + rpcUrl);
         if (rpcUrl.startsWith("file:")) {
             // set new rpcURL
-            endpoint.setServiceEntryPoint("http://bunnycacher.appspot.com/bunnycacher/GWT.rpc");
+            endpoint.setServiceEntryPoint(baseUrl + "/GWT.rpc");
         }
     
         return service;
@@ -74,7 +75,12 @@ public class Application implements EntryPoint {
         if (loginDisabled) {
             loadMainForm();
         } else {
-            loginService.login(GWT.getHostPageBaseURL(), new AsyncCallback<LoginInfo>() {
+            String hostPageBaseUrl = GWT.getHostPageBaseURL();
+            if ( hostPageBaseUrl.startsWith("file:") ) {
+                // TODO: maybe append the path-info?
+                hostPageBaseUrl = baseUrl;
+            }
+            loginService.login(hostPageBaseUrl, new AsyncCallback<LoginInfo>() {
                 public void onFailure(Throwable error) {
                     // TODO: replace with error handling once a valid Session is required.
                     GWT.log("Asynchronous call of LoginService.login failed to complete normally, " +
