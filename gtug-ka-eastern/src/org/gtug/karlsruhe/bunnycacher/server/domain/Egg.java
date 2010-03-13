@@ -36,7 +36,10 @@ public class Egg implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User creator;
 
-    
+
+	/**
+	 * Empty constructor for JPA
+	 */
     public Egg() {
     }
     
@@ -46,14 +49,6 @@ public class Egg implements Serializable {
     	this.hint = eggDto.getHint();
     }
 
-    public Key getKey() {
-		return key;
-	}
-
-	public void setKey(Key key) {
-		this.key = key;
-	}
-
 	public Egg(double latitude, double longitude, String hint) {
 		super();
 		this.latitude = latitude;
@@ -61,6 +56,14 @@ public class Egg implements Serializable {
 		this.hint = hint;
 	}
 
+    public Key getKey() {
+		return key;
+	}
+
+	public void setKey(Key key) {
+		this.key = key;
+	}
+	
 	public double getLatitude() {
 		return latitude;
 	}

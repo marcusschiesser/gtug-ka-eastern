@@ -18,8 +18,9 @@ public class User implements Serializable {
 
 	private String googleId;
 	
-	public static User currentUser=new User();
-
+	/**
+	 * Empty constructor for JPA
+	 */
     public User() {
     }
 
