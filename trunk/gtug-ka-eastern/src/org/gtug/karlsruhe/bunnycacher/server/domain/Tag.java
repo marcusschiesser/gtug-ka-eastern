@@ -3,7 +3,6 @@ package org.gtug.karlsruhe.bunnycacher.server.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,12 +27,15 @@ public class Tag implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private User user;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Egg egg;
 
+	/**
+	 * Empty constructor for JPA
+	 */
     public Tag() {
     }
 
