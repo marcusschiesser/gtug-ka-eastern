@@ -18,6 +18,7 @@ import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
@@ -36,7 +37,7 @@ public class MainForm extends Composite {
 	Map map;
 	
 	@UiField
-	HasClickHandlers newEggButton;
+	Button newEggButton;
 	
 	@UiField(provided = true)
 	final Resources resources = Resources.INSTANCE;
@@ -49,6 +50,7 @@ public class MainForm extends Composite {
 		Geolocation.watchPosition( new PositionCallback(){
 			@Override
 			public void onPosition(Position value) {
+				newEggButton.setEnabled(true);
 				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
 				LatLngBounds bounds = map.getMapJSO().getBounds();
 			    double minLat = bounds.getSouthWest().getLatitude();
