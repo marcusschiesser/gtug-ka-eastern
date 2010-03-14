@@ -12,7 +12,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
@@ -20,6 +19,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.LatLngBounds;
@@ -46,8 +46,15 @@ public class MainForm extends Composite {
 	@UiField
 	NewEggView newEggView;
 	
+	@UiField
+	HTMLPanel cardFront;
+	@UiField
+	HTMLPanel cardBack;
+	
 	public MainForm() {
 		initWidget(uiBinder.createAndBindUi(this));
+		showMain(true);
+		
 		map.addListener(MapEventType.TILESLOADED, new Runnable() {
 			@Override
 			public void run() {
@@ -94,9 +101,27 @@ public class MainForm extends Composite {
 	public void flipCard() {
 		Element card = Document.get().getElementById("card");
 		if (card.getClassName().equals("cardCard")) {
+			showMain(true);
 			card.setClassName("cardCard cardCardFlipped");
 		} else {
+			showMain(false);
 			card.setClassName("cardCard");
 		}
 	}
+	
+	/**
+	 * Shows the main form and hiddens the new egg view on non-WebKit browser or visa versa.
+	 * 
+	 * @param show
+	 */
+	private void showMain(boolean show) {
+		if (!"WebKit".contains(getUserAgent())) {
+			cardFront.setVisible(show);
+			cardBack.setVisible(!show);
+		}
+	}
+	
+	public static native String getUserAgent() /*-{
+		return navigator.userAgent.toLowerCase();
+	}-*/;
 }
