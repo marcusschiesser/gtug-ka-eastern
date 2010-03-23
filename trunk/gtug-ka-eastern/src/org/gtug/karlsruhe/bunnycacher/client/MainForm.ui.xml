@@ -30,6 +30,9 @@
 				<div class="cardFaceBack cardFace">
 					<app:NewEggView ui:field='newEggView'></app:NewEggView>
 				</div>
+				<div class="cardFaceBack cardFace">
+					<app:FoundEggView ui:field='foundEggView'></app:FoundEggView>
+				</div>				
 			</g:HTMLPanel>
 		</div>
 	</g:HTMLPanel>

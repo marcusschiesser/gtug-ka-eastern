@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.canvas {
+			background: #000;
+			background: rgba(0, 0, 0, 0.75);
+			padding: 5px;
+		}
+		.text {
+			font-weight: bold;
+			color: #fff;
+		}
+		.textInput {
+			width: 97%;
+			height: 3em;
+		}
+	</ui:style>
+	
+	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources" field="resources" />
+	
+	<g:HTMLPanel>
+		<g:HTMLPanel styleName='topToolbar'>
+			<h1>Eieiei, du hast ein Ei gefunden!</h1>
+			<g:Button ui:field='cancelButton' styleName='cancelButton'>Abbruch</g:Button>
+			<g:Button ui:field='okButton' styleName='okButton'>Ok, Tag anlegen</g:Button>
+		</g:HTMLPanel>
+	   <g:HTMLPanel width='100%'  styleName='mainPanel {style.canvas}'>
+         <div ui:field='otherTagsText' class="{style.text}"/>
+	     <br /><br />
+	     <div class='{style.text}'>Du kannst auch ein Tag hinterlegen:</div>
+	     <g:TextArea ui:field="newTagText" styleName='{style.textInput}'></g:TextArea>
+	   </g:HTMLPanel>
+   </g:HTMLPanel>
+
+</ui:UiBinder>

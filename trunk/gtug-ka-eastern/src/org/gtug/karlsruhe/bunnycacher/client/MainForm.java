@@ -16,6 +16,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -25,63 +26,73 @@ import com.googlecode.maps3.client.LatLng;
 import com.googlecode.maps3.client.LatLngBounds;
 import com.googlecode.maps3.client.MapEventType;
 
+enum BackSideOfCard {
+	FRONT_SIDE, NEW_EGG_VIEW, FOUND_EGG_VIEW
+}
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class MainForm extends Composite {
-	private static MainFormUiBinder uiBinder = GWT.create(MainFormUiBinder.class);
+	private static MainFormUiBinder uiBinder = GWT
+			.create(MainFormUiBinder.class);
 
 	interface MainFormUiBinder extends UiBinder<Widget, MainForm> {
 	}
-	
+
 	@UiField
 	Map map;
-	
+
 	@UiField
 	Button newEggButton;
-	
+
 	@UiField(provided = true)
 	final Resources resources = Resources.INSTANCE;
-	
+
 	@UiField
 	NewEggView newEggView;
-	
+
+	@UiField
+	FoundEggView foundEggView;
+
 	@UiField
 	HTMLPanel cardFront;
 	@UiField
 	HTMLPanel cardBack;
-	
+
 	public MainForm() {
 		initWidget(uiBinder.createAndBindUi(this));
 		showMain(true);
-		
+
 		map.addListener(MapEventType.TILESLOADED, new Runnable() {
 			@Override
 			public void run() {
 				LatLngBounds bounds = map.getMapJSO().getBounds();
-			    double minLat = bounds.getSouthWest().getLatitude();
-			    double maxLat = bounds.getNorthEast().getLatitude();
-			    double minLng = bounds.getSouthWest().getLongitude();
-			    double maxLng = bounds.getNorthEast().getLongitude();
-				Application.eggService.getEggsWithin(minLat, maxLat, minLng, maxLng, new AsyncCallback<List<EggDto>>() {
-					
-					@Override
-					public void onSuccess(List<EggDto> eggs) {
-						map.setEggs(eggs);
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						
-					}
-				});
+				double minLat = bounds.getSouthWest().getLatitude();
+				double maxLat = bounds.getNorthEast().getLatitude();
+				double minLng = bounds.getSouthWest().getLongitude();
+				double maxLng = bounds.getNorthEast().getLongitude();
+				Application.eggService.getEggsWithin(minLat, maxLat, minLng,
+						maxLng, new AsyncCallback<List<EggDto>>() {
+
+							@Override
+							public void onSuccess(List<EggDto> eggs) {
+								map.setEggs(eggs);
+							}
+
+							@Override
+							public void onFailure(Throwable caught) {
+
+							}
+						});
 			}
 		});
-		Geolocation.watchPosition( new PositionCallback(){
+		Geolocation.watchPosition(new PositionCallback() {
 			@Override
 			public void onPosition(Position value) {
 				newEggButton.setEnabled(true);
-				map.updatePosition(LatLng.newInstance(value.getLatitude(), value.getLongitude()));
+				map.updatePosition(MainForm.this, LatLng.newInstance(value.getLatitude(),
+						value.getLongitude()));
 			}
 		});
 	}
@@ -89,28 +100,45 @@ public class MainForm extends Composite {
 	@UiHandler("newEggButton")
 	public void onClick(ClickEvent event) {
 		newEggView.setPosition(map.getPosition());
-		this.flipCard();
+		this.flipCard(BackSideOfCard.NEW_EGG_VIEW);
 	}
-	@UiFactory Map makeMap() {
-		return new Map(LatLng.newInstance(49.001971,8.38304));
+
+	@UiFactory
+	Map makeMap() {
+		return new Map(LatLng.newInstance(49.001971, 8.38304));
 	}
-	@UiFactory NewEggView makeNewEggView() {
+
+	@UiFactory
+	NewEggView makeNewEggView() {
 		return new NewEggView(this);
 	}
 
-	public void flipCard() {
+	@UiFactory
+	FoundEggView makeFoundEggView() {
+		return new FoundEggView(this);
+	}
+
+	public void flipCard(BackSideOfCard backSideOfCardEnum) {
 		Element card = Document.get().getElementById("card");
-		if (card.getClassName().equals("cardCard")) {
+		if (backSideOfCardEnum.equals(BackSideOfCard.FRONT_SIDE)) {
 			showMain(true);
 			card.setClassName("cardCard cardCardFlipped");
 		} else {
+			if (backSideOfCardEnum == BackSideOfCard.FOUND_EGG_VIEW) {
+				foundEggView.setVisible(true);
+				newEggView.setVisible(false);
+			} else {
+				foundEggView.setVisible(false);
+				newEggView.setVisible(true);
+			}
 			showMain(false);
 			card.setClassName("cardCard");
 		}
 	}
-	
+
 	/**
-	 * Shows the main form and hiddens the new egg view on non-WebKit browser or visa versa.
+	 * Shows the main form and hiddens the new egg view on non-WebKit browser or
+	 * visa versa.
 	 * 
 	 * @param show
 	 */
@@ -120,7 +148,7 @@ public class MainForm extends Composite {
 			cardBack.setVisible(!show);
 		}
 	}
-	
+
 	public static native String getUserAgent() /*-{
 		return navigator.userAgent.toLowerCase();
 	}-*/;

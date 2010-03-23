@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
+import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.server.domain.Egg;
 
@@ -69,6 +70,12 @@ public class EggServiceImpl implements EggService {
 	public void foundEgg(EggDto egg, String message) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<TagDto> getTags(EggDto egg) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

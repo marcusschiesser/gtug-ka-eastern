@@ -23,7 +23,7 @@ public class NewEggView extends Composite {
         @Override
         public void onFailure(Throwable caught) {
             Notification.alert("Callback exception: " + caught.toString() + " : " + caught.getMessage(), "Error", ":("); // TODO: externalize strings
-            NewEggView.this.parentForm.flipCard();
+            NewEggView.this.parentForm.flipCard(BackSideOfCard.FRONT_SIDE);
         }
 
     }
@@ -100,7 +100,7 @@ public class NewEggView extends Composite {
                 AsyncCallback<Void> callback = new AsyncCallbackImplementation<Void>() {
                     @Override
                     public void onSuccess(Void result) {
-                        NewEggView.this.parentForm.flipCard();
+                        NewEggView.this.parentForm.flipCard(BackSideOfCard.FRONT_SIDE);
                         Notification.alert("Your egg has been saved.", "We likez Eggs", ":)"); // TODO: externalize strings
                     }
                 };
@@ -117,7 +117,7 @@ public class NewEggView extends Composite {
 
     @UiHandler("cancelButton")
     void onCancelClick(ClickEvent e) {
-        this.parentForm.flipCard();
+        this.parentForm.flipCard(BackSideOfCard.FRONT_SIDE);
     }
 
 }
