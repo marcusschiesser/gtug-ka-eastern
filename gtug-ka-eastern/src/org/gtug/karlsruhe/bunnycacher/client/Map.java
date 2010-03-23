@@ -49,7 +49,7 @@ public class Map extends MapWidget {
 		_timer.scheduleRepeating(200);
 	}
 
-	public void updatePosition(LatLng actPos) {
+	public void updatePosition(MainForm mainForm, LatLng actPos) {
 		_actPos = actPos;
 		// call this function to update the position
 		_position.setPosition(actPos);
@@ -68,7 +68,7 @@ public class Map extends MapWidget {
 		}
 		// display hint if nearest egg is nearby (10m)
 		if (minEgg!=null && minDistance < 0.1) {
-			HintPopup.showPopup(minEgg.data);
+			HintPopup.showPopup(mainForm, minEgg.data);
 		}
 	}
 

@@ -15,39 +15,39 @@ public class HintPopup extends PopupPanel {
 	private Label hintLabel;
 	private Button foundButton;
 	private EggDto data;
+	private Button notFoundButton;
 	
 	private static HintPopup _instance;
-	
-	private HintPopup() {
+	private HintPopup(final MainForm mainForm) {
 		super(true);
 		VerticalPanel container = new VerticalPanel();
 		hintLabel = new Label();
 		container.add(hintLabel);
 		foundButton = new Button("Ja, Ei gefunden!");
 		container.add(foundButton);
+		notFoundButton = new Button("Nein, noch nicht...");
+		container.add(notFoundButton);		
 		add(container);
 		this.center();
+		notFoundButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				HintPopup.this.hide();			
+			}
+		});
 		foundButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				HintPopup.this.hide();
-				Application.eggService.foundEgg(data, "TODO", new AsyncCallback<Void>() {
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-					}
-					@Override
-					public void onSuccess(Void result) {
-						// TODO Auto-generated method stub
-					}
-				});
+				mainForm.foundEggView.setData(data);
+				mainForm.flipCard(BackSideOfCard.FOUND_EGG_VIEW);
 			}
 		});
 	}
 	
-	public static void showPopup(EggDto pData) {
+	public static void showPopup(MainForm mainForm, EggDto pData) {
 		if(_instance==null) {
-			_instance = new HintPopup();
+			_instance = new HintPopup(mainForm);
 		}
 		_instance.setData(pData);
 		_instance.show();
