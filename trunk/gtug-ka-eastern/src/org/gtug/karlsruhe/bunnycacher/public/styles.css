@@ -8,43 +8,75 @@
 */
 
 .cardFace {
-  	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-	-webkit-backface-visibility: hidden;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	position: absolute;
-	
 }
 .cardFace * {
-	-webkit-backface-visibility: hidden;
 }
 .cardFaceFront {
 	color: rgb(78,150,249);
 	background-color: rgb(34,65,108);
+	z-index: 2;
 }
 .cardFaceBack {
 	color: rgb(34,65,108);
 	background-color: rgba(78,150,249,0.5);
-	-webkit-transform: rotateY(180deg);
+	z-index: 1;
+}
+.cardFaceHidden {
+	display: none;
 }
 .cardContainer {
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-webkit-perspective: 900;
 }
 .cardCard {
-	-webkit-transform-style: preserve-3d;	
-	-webkit-transition-property: -webkit-transform;
-	-webkit-transition-duration: 1.0s;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	position: absolute;
 }
-.cardCard.cardCardFlipped {
-	-webkit-transform: rotateY(180deg);
+
+.cardCard.cardCardFlipped .cardFaceFront {
+	z-index: 1;
+}
+.cardCard.cardCardFlipped .cardFaceFront .topToolbar {
+	display: none;
+}
+.cardCard.cardCardFlipped .cardFaceBack {
+	z-index: 2;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - the animation magic */
+	.cardFace {
+	  	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+		-webkit-backface-visibility: hidden;
+	}
+	.cardFace * {
+		-webkit-backface-visibility: hidden;
+	}
+	.cardFaceFront {
+		z-index: 1 !important;
+	}
+	.cardFaceBack {
+		-webkit-transform: rotateY(180deg);
+		z-index: 1 !important;
+	}
+	.cardContainer {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-perspective: 900;
+	}
+	.cardCard {
+		-webkit-transform-style: preserve-3d;	
+		-webkit-transition-property: -webkit-transform;
+		-webkit-transition-duration: 1.0s;
+	}
+	.cardCard.cardCardFlipped {
+		-webkit-transform: rotateY(180deg);
+	}
 }
 
 .gwt-Button {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
+import org.gtug.karlsruhe.phonegap.client.Notification;
 import org.gtug.karlsruhe.phonegap.client.Position;
 import org.gtug.karlsruhe.phonegap.client.PositionCallback;
 
@@ -55,14 +56,8 @@ public class MainForm extends Composite {
 	@UiField
 	FoundEggView foundEggView;
 
-	@UiField
-	HTMLPanel cardFront;
-	@UiField
-	HTMLPanel cardBack;
-
 	public MainForm() {
 		initWidget(uiBinder.createAndBindUi(this));
-		showMain(true);
 
 		map.addListener(MapEventType.TILESLOADED, new Runnable() {
 			@Override
@@ -98,7 +93,7 @@ public class MainForm extends Composite {
 	}
 
 	@UiHandler("newEggButton")
-	public void onClick(ClickEvent event) {
+	public void onNewEggButtonClick(ClickEvent event) {
 		newEggView.setPosition(map.getPosition());
 		this.flipCard(BackSideOfCard.NEW_EGG_VIEW);
 	}
@@ -121,35 +116,17 @@ public class MainForm extends Composite {
 	public void flipCard(BackSideOfCard backSideOfCardEnum) {
 		Element card = Document.get().getElementById("card");
 		if (backSideOfCardEnum.equals(BackSideOfCard.FRONT_SIDE)) {
-			showMain(true);
-			card.setClassName("cardCard cardCardFlipped");
+			card.setClassName("cardCard");
 		} else {
 			if (backSideOfCardEnum == BackSideOfCard.FOUND_EGG_VIEW) {
-				foundEggView.setVisible(true);
-				newEggView.setVisible(false);
+				foundEggView.getElement().getParentElement().removeClassName("cardFaceHidden");
+				newEggView.getElement().getParentElement().addClassName("cardFaceHidden");
 			} else {
-				foundEggView.setVisible(false);
-				newEggView.setVisible(true);
+				foundEggView.getElement().getParentElement().addClassName("cardFaceHidden");
+				newEggView.getElement().getParentElement().removeClassName("cardFaceHidden");
 			}
-			showMain(false);
-			card.setClassName("cardCard");
+			card.setClassName("cardCard cardCardFlipped");
 		}
 	}
 
-	/**
-	 * Shows the main form and hiddens the new egg view on non-WebKit browser or
-	 * visa versa.
-	 * 
-	 * @param show
-	 */
-	private void showMain(boolean show) {
-		if (!"WebKit".contains(getUserAgent())) {
-			cardFront.setVisible(show);
-			cardBack.setVisible(!show);
-		}
-	}
-
-	public static native String getUserAgent() /*-{
-		return navigator.userAgent.toLowerCase();
-	}-*/;
 }
