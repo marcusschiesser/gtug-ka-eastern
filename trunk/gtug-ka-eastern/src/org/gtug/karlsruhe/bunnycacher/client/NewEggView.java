@@ -90,8 +90,7 @@ public class NewEggView extends Composite {
     @UiHandler("okButton")
     void onOkClick(ClickEvent e) {
         // TOOD: daten an webservice übergeben
-        EggDto egg = new EggDto(actPos.getLatitude(), actPos.getLongitude(), hintText.getText());
-        egg.setEid(eid);
+        EggDto egg = new EggDto(eid, actPos.getLatitude(), actPos.getLongitude(), hintText.getText());
 
         Application.eggService.createEgg(egg, new AsyncCallbackImplementation<Void>() {
 

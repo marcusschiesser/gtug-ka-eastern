@@ -13,7 +13,7 @@ public interface EggService extends RemoteService {
 
 	void createEgg(EggDto egg);
 
-	void createTag(Integer eid, String message);
+	void createTag(long eid, String message);
 
 	Integer reserveEid();
 

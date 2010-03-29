@@ -16,7 +16,6 @@ public class Map extends MapWidget {
 	private static final int MIN_RADIUS = 2;
 	private static final int MAX_RADIUS = 22;
 
-	private Marker _position;
 	private Ellipse _radar;
 	private LatLng _actPos;
 	private Timer _timer;

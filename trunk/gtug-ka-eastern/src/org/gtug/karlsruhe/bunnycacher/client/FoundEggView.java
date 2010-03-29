@@ -2,20 +2,22 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import java.util.List;
 
+import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
+import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;
+import org.gtug.karlsruhe.phonegap.client.Notification;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.*;
-import com.googlecode.maps3.client.LatLng;
-import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
-import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
-import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;
-import org.gtug.karlsruhe.phonegap.client.Notification;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.Widget;
 
 public class FoundEggView extends Composite {
 

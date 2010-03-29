@@ -16,7 +16,7 @@ public interface EggServiceAsync {
 
 	void reserveEid(AsyncCallback<Integer> callback);
 
-	void createTag(Integer eid, String message, AsyncCallback<Void> callback);
+	void createTag(long eid, String message, AsyncCallback<Void> callback);
 
 	void foundEgg(EggDto egg, String message, AsyncCallback<Void> callback);
 
