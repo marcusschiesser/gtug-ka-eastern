@@ -15,25 +15,21 @@
 	</ui:style>
 	<g:HTMLPanel styleName="cardContainer">
 		<div id="card" class="cardCard">
-			<g:HTMLPanel ui:field="cardFront">
-				<div class="cardFaceFront cardFace">
-					<g:HTMLPanel styleName='topToolbar'>
-						<h1>BunnyCacher</h1>
-						<g:Button ui:field='newEggButton' addStyleNames='{style.newEgg}' enabled='false'>
-							Ei verstecken
-						</g:Button>
-					</g:HTMLPanel>
-					<app:Map ui:field='map' styleName='mainPanel'></app:Map>
-				</div>
-			</g:HTMLPanel>
-			<g:HTMLPanel ui:field="cardBack">
-				<div class="cardFaceBack cardFace">
-					<app:NewEggView ui:field='newEggView'></app:NewEggView>
-				</div>
-				<div class="cardFaceBack cardFace">
-					<app:FoundEggView ui:field='foundEggView'></app:FoundEggView>
-				</div>				
-			</g:HTMLPanel>
+			<div class="cardFaceFront cardFace">
+				<g:HTMLPanel styleName='topToolbar'>
+					<h1>BunnyCacher</h1>
+					<g:Button ui:field='newEggButton' addStyleNames='{style.newEgg}' enabled='false'>
+						Ei verstecken
+					</g:Button>
+				</g:HTMLPanel>
+				<app:Map ui:field='map' styleName='mainPanel'></app:Map>
+			</div>
+			<div class="cardFaceBack cardFace">
+				<app:NewEggView ui:field='newEggView'></app:NewEggView>
+			</div>
+			<div class="cardFaceBack cardFace">
+				<app:FoundEggView ui:field='foundEggView'></app:FoundEggView>
+			</div>		
 		</div>
 	</g:HTMLPanel>
 </ui:UiBinder>
