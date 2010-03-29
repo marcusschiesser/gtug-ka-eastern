@@ -13,8 +13,8 @@ import com.googlecode.maps3.client.Marker;
 
 public class Map extends MapWidget {
 
-	private static final int MIN_RADIUS = 200;
-	private static final int MAX_RADIUS = 220;
+	private static final int MIN_RADIUS = 2;
+	private static final int MAX_RADIUS = 22;
 
 	private Marker _position;
 	private Ellipse _radar;
@@ -37,7 +37,7 @@ public class Map extends MapWidget {
 		_eggs = new LinkedList<MyEgg>();
 		_actPos = actPos;
 		_radius = MIN_RADIUS;
-		_position = MapFactory.createPosition(this, actPos);
+		//_position = MapFactory.createPosition(this, actPos);
 		_timer = new Timer() {
 			@Override
 			public void run() {
@@ -52,7 +52,7 @@ public class Map extends MapWidget {
 	public void updatePosition(MainForm mainForm, LatLng actPos) {
 		_actPos = actPos;
 		// call this function to update the position
-		_position.setPosition(actPos);
+		//_position.setPosition(actPos);
 		this.getMapJSO().setCenter(actPos);
 		// find nearest egg
 		double minDistance = Double.MAX_VALUE;
