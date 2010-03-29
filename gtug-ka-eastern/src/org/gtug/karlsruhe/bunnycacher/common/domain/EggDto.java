@@ -10,17 +10,18 @@ public class EggDto implements Serializable {
 	private Date created;
 	private String creator;
 	private String hint;
-	private Integer eid;
+	private long eid;
 
 	public EggDto() {
 		
 	}
 	
-	public EggDto(double latitude, double longitude, String hint) {
+	public EggDto(long eid, double latitude, double longitude, String hint) {
 		this();
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.hint = hint;
+		this.eid = eid;
 	}
 	
 	public double getLatitude() {
@@ -63,11 +64,11 @@ public class EggDto implements Serializable {
 		this.hint = hint;
 	}
 
-	public void setEid(Integer eid) {
+	public void setEid(long eid) {
 		this.eid = eid;
 	}
 
-	public Integer getEid() {
+	public long getEid() {
 		return eid;
 	}
 

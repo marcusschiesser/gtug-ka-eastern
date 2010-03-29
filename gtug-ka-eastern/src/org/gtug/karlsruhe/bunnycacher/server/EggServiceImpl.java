@@ -49,7 +49,7 @@ public class EggServiceImpl implements EggService {
 
 		List<EggDto> eggDtos = new ArrayList<EggDto>();
 		for (Egg egg : (List<Egg>) query.getResultList()) {
-			eggDtos.add(new EggDto(egg.getLatitude(), egg.getLongitude(), egg.getHint()));
+			eggDtos.add(new EggDto(egg.getKey().getId(), egg.getLatitude(), egg.getLongitude(), egg.getHint()));
 		}
 		return eggDtos;
 	}
@@ -61,15 +61,15 @@ public class EggServiceImpl implements EggService {
 	}
 
 	@Override
-	public void createTag(Integer eid, String message) {
+	public void createTag(long eid, String message) {
+		Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg WHERE key="+eid);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void foundEgg(EggDto egg, String message) {
-		// TODO Auto-generated method stub
-		
+		createTag(egg.getEid(), message);
 	}
 
 	@Override

@@ -1,8 +1,5 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
 
@@ -10,8 +7,6 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.core.client.GWT;
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class LoginServiceImpl implements LoginService {
 
