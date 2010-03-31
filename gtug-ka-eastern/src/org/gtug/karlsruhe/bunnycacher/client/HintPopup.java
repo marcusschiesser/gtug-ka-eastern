@@ -2,54 +2,72 @@ package org.gtug.karlsruhe.bunnycacher.client;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.PopupPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class HintPopup extends PopupPanel {
 
-	private Label hintLabel;
-	private Button foundButton;
+	private static HintPopupUiBinder uiBinder = GWT.create(HintPopupUiBinder.class);
+	interface HintPopupUiBinder extends UiBinder<Widget, HintPopup> {}
+	
+	@UiField
+	HasText hintLabel;
+	@UiField
+	HasClickHandlers foundButton;
+	@UiField
+	HasClickHandlers notFoundButton;
+	
 	private EggDto data;
-	private Button notFoundButton;
+	private MainForm mainForm;
 	
 	private static HintPopup _instance;
+	private static boolean _enabled = true;
 	private HintPopup(final MainForm mainForm) {
 		super(true);
-		VerticalPanel container = new VerticalPanel();
-		hintLabel = new Label();
-		container.add(hintLabel);
-		foundButton = new Button("Ja, Ei gefunden!");
-		container.add(foundButton);
-		notFoundButton = new Button("Nein, noch nicht...");
-		container.add(notFoundButton);		
-		add(container);
-		this.center();
-		notFoundButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				HintPopup.this.hide();			
-			}
-		});
-		foundButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				HintPopup.this.hide();
-				mainForm.foundEggView.setData(data);
-				mainForm.flipCard(BackSideOfCard.FOUND_EGG_VIEW);
-			}
-		});
+		this.mainForm = mainForm;
+		setWidget(uiBinder.createAndBindUi(this));
 	}
+	
+	@UiHandler("foundButton")
+	void onFoundButtonClick(ClickEvent e) {
+		this.hide();
+		mainForm.foundEggView.setData(data);
+		mainForm.flipCard(BackSideOfCard.FOUND_EGG_VIEW);
+	}
+	@UiHandler("notFoundButton")
+	void onNotFoundButtonClick(ClickEvent e) {
+		this.hide();
+	}
+	
+	
 	
 	public static void showPopup(MainForm mainForm, EggDto pData) {
 		if(_instance==null) {
 			_instance = new HintPopup(mainForm);
 		}
-		_instance.setData(pData);
-		_instance.show();
+		if (_enabled) {
+			_instance.setData(pData);
+			_instance.show();
+			_instance.center();
+		}
+	}
+	
+	public static void enablePopup() {
+		_enabled = true;
+	}
+	
+	public static void disablePopup() {
+		_enabled = false;
+		if (_instance!=null) {
+			_instance.hide();
+		}
 	}
 
 	private void setData(EggDto pData) {

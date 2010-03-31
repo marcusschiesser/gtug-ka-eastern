@@ -92,7 +92,7 @@ public class FoundEggView extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				Notification.alert("Eieiei",
-						"Etwas ging schief beim laden der vorhandenen EI-Tags",
+						"Etwas ging schief beim Laden der vorhandenen Ei-Tags",
 						":-(");
 
 			}
