@@ -114,6 +114,7 @@ public class MainForm extends Composite {
 		Element card = Document.get().getElementById("card");
 		if (backSideOfCardEnum.equals(BackSideOfCard.FRONT_SIDE)) {
 			card.setClassName("cardCard");
+			HintPopup.enablePopup();
 		} else {
 			if (backSideOfCardEnum == BackSideOfCard.FOUND_EGG_VIEW) {
 				foundEggView.getElement().getParentElement().removeClassName("cardFaceHidden");
@@ -123,6 +124,7 @@ public class MainForm extends Composite {
 				newEggView.getElement().getParentElement().removeClassName("cardFaceHidden");
 			}
 			card.setClassName("cardCard cardCardFlipped");
+			HintPopup.disablePopup();
 		}
 	}
 

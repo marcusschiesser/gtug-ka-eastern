@@ -9,9 +9,10 @@
 	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources"
 		field="resources" />
 
-	<g:PopupPanel ui:field='popup'>
+	<g:HTMLPanel>
 		<g:Label ui:field='hintLabel'></g:Label>
 		<g:Button ui:field='foundButton' styleName='foundButton'>Ja, Ei gefunden!</g:Button>
-	</g:PopupPanel>
+		<g:Button ui:field='notFoundButton' styleName='notFoundButton'>Nein, noch nicht!</g:Button>
+	</g:HTMLPanel>
 
 </ui:UiBinder>
