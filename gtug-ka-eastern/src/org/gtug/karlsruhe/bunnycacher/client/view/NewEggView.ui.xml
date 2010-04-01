@@ -1,0 +1,61 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:style>
+    .canvas {
+      background: #000;
+      background: rgba(0, 0, 0, 0.75);
+      width: 100%;
+      padding: 15px;
+    }
+    .text {
+      font-weight: bold;
+      color: #fff;
+    }
+    .textInput {
+      width: 97%;
+      height: 3em;
+    }
+    .cancel {
+      position: absolute;
+      left: 3px;
+      bottom: 3px;
+    }
+    .cancel:active {
+      left: 5px;
+      bottom: 1px;
+    }
+    .ok {
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+    }
+    .ok:active {
+      right: 1px;
+      bottom: 1px;
+    }
+    .tbar h1 {
+      padding-left: 40px;
+    }
+  </ui:style>
+
+  <ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources" field="resources" />
+
+  <g:HTMLPanel>
+    <g:HTMLPanel styleName='topToolbar {style.tbar}'>
+      <h1>Ei verstecken</h1>
+      <g:Button ui:field='cancelButton' addStyleNames='backButton {style.cancel}'>Abbruch</g:Button>
+      <g:Button ui:field='okButton' addStyleNames='{style.ok}'>OK</g:Button>
+    </g:HTMLPanel>
+     <g:HTMLPanel styleName='mainPanel {style.canvas}'>
+         <div ui:field='loginPrompt' class="{style.text}"/>
+       <div class='{style.text}'>Dein Ei bekommt die Ei-D: <span ui:field='eidSpan'/>. Schreib Sie auf das Ei und verstecke es gut an der aktuellen Position.</div>
+       <br /><br />
+       <div class='{style.text}'>Gib hier einen Hinweis für den Sucher ein:</div>
+       <g:TextArea ui:field="hintText" styleName='{style.textInput}'></g:TextArea>
+       <div class='{style.text}'>Optional hier noch ein Kommentar für die Leute, die das Ei gefunden haben:</div>
+       <g:TextArea ui:field="tagText" styleName='{style.textInput}'></g:TextArea>
+     </g:HTMLPanel>
+   </g:HTMLPanel>
+
+</ui:UiBinder>

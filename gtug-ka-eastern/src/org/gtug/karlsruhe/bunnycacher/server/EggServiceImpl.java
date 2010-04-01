@@ -36,8 +36,11 @@ public class EggServiceImpl implements EggService {
 
     @Transactional
     public void createEgg(EggDto eggDto) {
+        // Check if egg id exists
+        findEid(eggDto.getEid());
+
         Egg egg = new Egg(eggDto);
-        egg.setEid(findEid(eggDto.getEid()));
+        egg.setEid(eggDto.getEid());
         egg.setCreated(new Date());
         egg.setCreatorId(getUserId());
         entityManager.get().persist(egg);
@@ -83,10 +86,11 @@ public class EggServiceImpl implements EggService {
 
     @Override
     @Transactional
-    public long reserveEid() {
+    public Long reserveEid() {
         Eid eid = new Eid();
-        Query query = entityManager.get().createQuery("SELECT COUNT(key) FROM Eid eid");
-        eid.setId((Long) query.getSingleResult() + 1);
+        // XXX This only works for max. 1000 entries
+        Query query = entityManager.get().createQuery("SELECT eid FROM Eid eid");
+        eid.setId(query.getResultList().size() + 1);
         entityManager.get().persist(eid);
         return eid.getId();
     }
@@ -94,8 +98,11 @@ public class EggServiceImpl implements EggService {
     @Override
     @Transactional
     public void createTag(long eid, String message) {
+        // Check if corresponding egg exists
+        findEggForEid(eid);
+
         Tag tag = new Tag();
-        tag.setEgg(findEggForEid(eid));
+        tag.setEid(eid);
         tag.setTimestamp(new Date());
         tag.setUserId(getUserId());
         tag.setMessage(message);

@@ -1,7 +1,8 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.client.view;
 
 import java.util.List;
 
+import org.gtug.karlsruhe.bunnycacher.client.Application;
 import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;

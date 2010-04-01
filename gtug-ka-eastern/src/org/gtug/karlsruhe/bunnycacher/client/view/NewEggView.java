@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.client.view;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
@@ -10,6 +10,9 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.googlecode.maps3.client.LatLng;
+
+import org.gtug.karlsruhe.bunnycacher.client.Application;
+import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
 import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Notification;

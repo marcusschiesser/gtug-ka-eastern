@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.client.domain;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.maps3.client.LatLng;

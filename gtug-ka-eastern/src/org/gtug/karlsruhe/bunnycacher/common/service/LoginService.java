@@ -2,7 +2,8 @@ package org.gtug.karlsruhe.bunnycacher.common.service;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
+
+import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
 
 /**
  * LoginService determines the current user's login state via appengine's UserService.

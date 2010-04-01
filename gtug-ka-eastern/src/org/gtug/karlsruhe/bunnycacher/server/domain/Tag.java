@@ -31,8 +31,7 @@ public class Tag implements Serializable {
     @Column(nullable = false)
     private String userId;
 
-    @ManyToOne
-    private Egg egg;
+    private long eid;
 
     /**
      * Empty constructor for JPA
@@ -72,14 +71,12 @@ public class Tag implements Serializable {
         this.userId = userId;
     }
 
-    public Egg getEgg() {
-        return egg;
+    public long getEid() {
+        return eid;
     }
 
-    public void setEgg(Egg egg) {
-        this.egg = egg;
+    public void setEid(long eid) {
+        this.eid = eid;
     }
-
-
 
 }

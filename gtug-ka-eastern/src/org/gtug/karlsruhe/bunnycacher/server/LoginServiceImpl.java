@@ -1,6 +1,6 @@
 package org.gtug.karlsruhe.bunnycacher.server;
 
-import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
+import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;
 
 import com.google.appengine.api.users.User;
