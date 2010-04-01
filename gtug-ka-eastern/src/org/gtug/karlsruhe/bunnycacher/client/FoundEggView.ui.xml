@@ -27,7 +27,6 @@
 			bottom: 1px;
 		}
 		.text {
-			font-weight: bold;
 			color: #fff;
 		}
 		.textInput {
@@ -49,8 +48,7 @@
 			<g:Button ui:field='okButton' addStyleNames='{style.ok}'>Ok, Tag anlegen</g:Button>
 		</g:HTMLPanel>
 	   <g:HTMLPanel styleName='mainPanel {style.canvas}'>
-         <div ui:field='otherTagsText' class="{style.text}"/>
-	     <br /><br />
+	   <g:VerticalPanel ui:field='otherTags'></g:VerticalPanel>
 	     <div class='{style.text}'>Du kannst auch ein Tag hinterlegen:</div>
 	     <g:TextArea ui:field="newTagText" styleName='{style.textInput}'></g:TextArea>
 	   </g:HTMLPanel>

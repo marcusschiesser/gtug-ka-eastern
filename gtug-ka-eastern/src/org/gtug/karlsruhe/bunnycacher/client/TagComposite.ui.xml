@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panel {
+			color: #fff;
+		}
+		.userLabel {
+			font-weight: bold;
+		}
+		.tagLabel {
+		}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.panel}">
+		<g:Label ui:field='userLabel'
+			styleName="{style.userLabel}">
+		</g:Label>
+		:
+		<g:Label ui:field='tagLabel' styleName="{style.tagLabel}"></g:Label>
+	</g:HTMLPanel>
+</ui:UiBinder> 
