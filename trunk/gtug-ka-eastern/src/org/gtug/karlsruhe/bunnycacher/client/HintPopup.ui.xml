@@ -10,9 +10,11 @@
 		field="resources" />
 
 	<g:HTMLPanel>
+		<g:Label>Das Ei in deiner Nähe sagt:</g:Label>
 		<g:Label ui:field='hintLabel'></g:Label>
-		<g:Button ui:field='foundButton' styleName='foundButton'>Ja, Ei gefunden!</g:Button>
-		<g:Button ui:field='notFoundButton' styleName='notFoundButton'>Nein, noch nicht!</g:Button>
+		<g:Label>Hast du es gefunden?</g:Label>
+		<g:Button ui:field='foundButton' addStyleNames='okButton'>Ja!</g:Button>
+		<g:Button ui:field='notFoundButton' addStyleNames='cancelButton'>Noch nicht!</g:Button>
 	</g:HTMLPanel>
 
 </ui:UiBinder>

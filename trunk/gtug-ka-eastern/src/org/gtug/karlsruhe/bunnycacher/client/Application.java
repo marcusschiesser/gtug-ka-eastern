@@ -56,6 +56,7 @@ public class Application implements EntryPoint {
         // because we want to take advantage of the entire client area.
         Window.enableScrolling(false);
         Window.setMargin("0px");
+        Window.scrollTo(0, 1); // hide iPhone address bar
         RootLayoutPanel.get().add(new MainForm());
     }
 }

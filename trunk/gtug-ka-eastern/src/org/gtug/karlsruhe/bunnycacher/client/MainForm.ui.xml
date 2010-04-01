@@ -12,11 +12,19 @@
 			right: 3px;
 			bottom: 3px;
 		}
+		.newEgg:active {
+			right: 1px;
+			bottom: 1px;
+		}
+		.mainToolbar h1 {
+			text-align:left !important;
+			padding-left: 10px;
+		}
 	</ui:style>
 	<g:HTMLPanel styleName="cardContainer">
 		<div id="card" class="cardCard">
 			<div class="cardFaceFront cardFace">
-				<g:HTMLPanel styleName='topToolbar'>
+				<g:HTMLPanel styleName='topToolbar {style.mainToolbar}'>
 					<h1>BunnyCacher</h1>
 					<g:Button ui:field='newEggButton' addStyleNames='{style.newEgg}' enabled='false'>
 						Ei verstecken

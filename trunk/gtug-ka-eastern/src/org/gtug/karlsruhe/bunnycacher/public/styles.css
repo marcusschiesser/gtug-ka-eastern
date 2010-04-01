@@ -81,83 +81,40 @@
 
 .gwt-Button {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-  color: #101010;
   display: inline-block;
-  font-size: 0.8em;
+  -webkit-border-image: url(iPhoneButton.png) 0 5 0 5;
+  -webkit-border-radius: 0;
+  border-width: 0 5px 0 5px;
+  padding: 0;
+  height: 28px;
+  line-height: 28px;
+  font-size: 12px;
   font-weight: bold;
-  border: 3px solid #282726;
-  background: -webkit-gradient( linear, left top, left bottom, from(#e2e2e2), to(#8c8a88), color-stop(0.5, #acadae), color-stop(0.5, #82807e) );
-  margin: 0 0 3px 0;
-  text-shadow: 0px 1px 0 #cecece;
-  -webkit-background-origin: padding-box;
-  -webkit-background-clip: border-box;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
+  color: #FFFFFF;
+  text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0;
+  text-decoration: none;
+  background: none;
 }
-
-
-.gwt-Button:hover,
-.gwt-Button:focus,
 .gwt-Button:active {
   color: #fff;
   text-shadow: none;
-  border-color: #10006d;
-  background: -webkit-gradient( linear, left top, left bottom, from(#aaaee5), to(#10006d), color-stop(0.5, #1F3B97), color-stop(0.5, #081f6f) );
+  -webkit-border-image: url(iPhoneGoButton.png) 0 5 0 5;
+  border-width: 0 5px;
+  margin-top:2px;
+  margin-left:2px;
 }
 
-.okButton {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 0.8em;
-  font-weight: bold;
-  border: 3px solid #04c10d;
-  background: -webkit-gradient( linear, left top, left bottom, from(#00751e), color-stop(0.5, #039831), color-stop(0.5, #039831), to(#007e2c) );
-  margin: 0 0 3px 0;
-  text-shadow: 0px 1px 0 #323232;
-  -webkit-background-origin: padding-box;
-  -webkit-background-clip: border-box;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  position: absolute;
-  left: 3px;
-  bottom: 3px;
+.backButton {
+  -webkit-border-image: url(iPhoneBackButton.png) 0 8 0 14;
+  border-width: 0 8px 0 14px;
 }
-.okButton:hover,
-.okButton:focus,
-.okButton:active {
+.backButton:active {
   color: #fff;
   text-shadow: none;
-  border-color: #003c03;
-  background: -webkit-gradient( linear, left top, left bottom, from(#008d24), color-stop(0.5, #00c33c), color-stop(0.5, #00d23b), to(#00cb48) );
-}
-
-
-.cancelButton {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 0.8em;
-  font-weight: bold;
-  border: 3px solid #a60101;
-  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
-  margin: 0 0 3px 0;
-  text-shadow: 0px 1px 0 #323232;
-  -webkit-background-origin: padding-box;
-  -webkit-background-clip: border-box;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-}
-.cancelButton:hover,
-.cancelButton:focus,
-.canceButton:active {
-  color: #fff;
-  text-shadow: none;
-  border-color: #3e0000;
-  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
+  -webkit-border-image: url(iPhoneBackButton.png) 0 8 0 14;
+  border-width: 0 8px 0 14px;
+  margin-top:2px;
+  margin-left:2px;
 }
 
 
@@ -169,28 +126,111 @@
 	bottom: 0;
 	padding: 0;
 	margin:0;
+	box-sizing: border-box;
 }
 .topToolbar {
-	background: -webkit-gradient( linear, left top, left bottom, from(#717171), to(#151515), color-stop(.1, #4d4d4d), color-stop(0.45, #252525), color-stop(0.455, #000), color-stop(0.555, #252525) );
-	color: white;
 	display:block;
 	position:absolute;
 	height:35px;
 	top:0;
 	left:0;
 	right:0;
+	box-sizing: border-box;
+    margin: 0;
+    color: #FFFFFF;
+    background: url(iPhoneToolbar.png) #6d84a2 repeat-x;
+    border-bottom: 1px solid #2d3642;
+	
 }
 .topToolbar h1 {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 1.3em;
 	font-weight: bold;
  	text-align: center;
 	text-overflow: ellipsis;
 	text-shadow: rgba(0, 0, 0, 0.6) 0px -1px 0px;
-	padding: 0;
+	padding: 10px;
 	margin:0;
-	line-height:1.7em;
+	line-height: 20px;
+    font-size: 20px;
+}
+
+body .gwt-PopupPanel {
+	border-width: 0;
+	padding: 5px;
+	background: #000 !important;
+	background: rgba(0,0,0, 0.75)  !important;
+	color: #fff;
+	box-sizing: border-box;
+	position: relative;
+}
+
+body .gwt-PopupPanel button {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  height: 32px;
+  border: 3px solid #282726;
+  background: -webkit-gradient( linear, left top, left bottom, from(#e2e2e2), to(#8c8a88), color-stop(0.5, #acadae), color-stop(0.5, #82807e) );
+  margin: 0 0 3px 0;
+  color: #efefef;
+  text-shadow: 0px 1px 0 #333;
+  -webkit-background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  -webkit-border-radius: 8px;
+  -webkit-border-image: none;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  display: inline-block;
+  width: 45%;
+}
+
+body .gwt-PopupPanel button:hover,
+body .gwt-PopupPanel button:active {
+  color: #fff;
+  text-shadow: none;
+  -webkit-border-image: none;
+}
+
+body .gwt-PopupPanel button:hover {
+  background: -webkit-gradient( linear, left top, left bottom, from(#aaaee5), to(#10006d), color-stop(0.5, #1F3B97), color-stop(0.5, #081f6f) );
+  -webkit-border-image: none;
+}
+
+body .gwt-PopupPanel button.cancel {
+  background: -webkit-gradient( linear, left top, left bottom, from(#5c5c5b), to(#1e1b16), color-stop(0.2, #1e1b16) );
+  margin-top: 6px;
+  -webkit-border-image: none;
+}
+body .gwt-PopupPanel button.okButton {
+  border: 3px solid #04c10d;
+  background: -webkit-gradient( linear, left top, left bottom, from(#00751e), color-stop(0.5, #039831), color-stop(0.5, #039831), to(#007e2c) );
+}
+body .gwt-PopupPanel button.okButton:hover,
+body .gwt-PopupPanel button.okButton:focus,
+body .gwt-PopupPanel button.okButton:active {
+  color: #fff;
+  text-shadow: none;
+  border-color: #003c03;
+  background: -webkit-gradient( linear, left top, left bottom, from(#008d24), color-stop(0.5, #00c33c), color-stop(0.5, #00d23b), to(#00cb48) );
 }
 
 
+body .gwt-PopupPanel button.cancelButton {
+  border: 3px solid #a60101;
+  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
+  position: absolute;
+  right: 5px;
+}
+body .gwt-PopupPanel button.cancelButton:hover,
+body .gwt-PopupPanel button.cancelButton:focus,
+body .gwt-PopupPanel button.canceButton:active {
+  color: #fff;
+  text-shadow: none;
+  border-color: #3e0000;
+  background: -webkit-gradient( linear, left top, left bottom, from(#640202), color-stop(0.5, #a80000), color-stop(0.5, #910101), to(#6a0101) );
+}
 
+body .gwt-PopupPanel .gwt-Label {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}

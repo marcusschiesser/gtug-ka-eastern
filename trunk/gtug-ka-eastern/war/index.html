@@ -3,20 +3,25 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="height=device-height" />
+    <meta id="viewport" name="viewport" content="height=422; width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
 
     <title>GTUG Karlsruhe BunnyCacher</title>
     
-	<!-- phonegap.js is only there when we compile for mobile devices. Otherwise we will get a 404 but who cares... -->
-	<script type="text/javascript" src="phonegap.js" charset="utf-8"></script>
-
     <!--                                           -->
     <!-- This script loads your compiled module.   -->
     <!-- If you add any GWT meta tags, they must   -->
     <!-- be added before this line.                -->
     <!--                                           -->
     <script type="text/javascript" language="javascript" src="bunnycacher/bunnycacher.nocache.js"></script>
+	<script>
+		setInterval(function() {
+		    if (window.innerWidth == 320) {
+		        document.getElementById("viewport").setAttribute("content", "height=422; width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;", false);
+		    } else if (window.innerWidth == 480) {
+		    	document.getElementById("viewport").setAttribute("content", "height=262; width=480; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;", false);
+		    }
+		}, 300);
+	</script>
   </head>
 
   <body>

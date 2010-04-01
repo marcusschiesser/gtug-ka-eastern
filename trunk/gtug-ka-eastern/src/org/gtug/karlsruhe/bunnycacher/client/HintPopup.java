@@ -8,9 +8,11 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.PopupPanel.PositionCallback;
 
 public class HintPopup extends PopupPanel {
 
@@ -30,7 +32,7 @@ public class HintPopup extends PopupPanel {
 	private static HintPopup _instance;
 	private static boolean _enabled = true;
 	private HintPopup(final MainForm mainForm) {
-		super(true);
+		super(false);
 		this.mainForm = mainForm;
 		setWidget(uiBinder.createAndBindUi(this));
 	}
@@ -54,8 +56,12 @@ public class HintPopup extends PopupPanel {
 		}
 		if (_enabled) {
 			_instance.setData(pData);
-			_instance.show();
-			_instance.center();
+			_instance.getElement().getStyle().setPropertyPx("width", Window.getClientWidth() - 10);
+			_instance.setPopupPositionAndShow(new PositionCallback() {
+		      public void setPosition(int offsetWidth, int offsetHeight) {
+		    	  _instance.setPopupPosition(0, Window.getClientHeight() - offsetHeight);
+		      }
+		    });
 		}
 	}
 	
@@ -72,7 +78,7 @@ public class HintPopup extends PopupPanel {
 
 	private void setData(EggDto pData) {
 		this.data = pData;
-		hintLabel.setText("Das Ei in deiner Nähe sagt: " + data.getHint() + ". Hast du es gefunden?");
+		hintLabel.setText(data.getHint());
 	}
 	
 }
