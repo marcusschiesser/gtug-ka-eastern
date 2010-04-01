@@ -5,27 +5,50 @@
 		.canvas {
 			background: #000;
 			background: rgba(0, 0, 0, 0.75);
-			padding: 5px;
+			width: 100%;
+			padding: 15px;
+		}
+		.cancel {
+			position: absolute;
+			left: 3px;
+			bottom: 3px;
+		}
+		.cancel:active {
+			left: 5px;
+			bottom: 1px;
+		}
+		.ok {
+			position: absolute;
+			right: 3px;
+			bottom: 3px;
+		}
+		.ok:active {
+			right: 1px;
+			bottom: 1px;
 		}
 		.text {
 			font-weight: bold;
 			color: #fff;
 		}
 		.textInput {
-			width: 97%;
+			display: block;
+			width: 80%;
 			height: 3em;
+		}
+		.tbar h1 {
+			padding-right: 40px;
 		}
 	</ui:style>
 	
 	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources" field="resources" />
 	
 	<g:HTMLPanel>
-		<g:HTMLPanel styleName='topToolbar'>
-			<h1>Eieiei, du hast ein Ei gefunden!</h1>
-			<g:Button ui:field='cancelButton' styleName='cancelButton'>Abbruch</g:Button>
-			<g:Button ui:field='okButton' styleName='okButton'>Ok, Tag anlegen</g:Button>
+		<g:HTMLPanel styleName='topToolbar {style.tbar}'>
+			<h1>Eieiei!</h1>
+			<g:Button ui:field='cancelButton' addStyleNames='backButton {style.cancel}'>Abbruch</g:Button>
+			<g:Button ui:field='okButton' addStyleNames='{style.ok}'>Ok, Tag anlegen</g:Button>
 		</g:HTMLPanel>
-	   <g:HTMLPanel width='100%'  styleName='mainPanel {style.canvas}'>
+	   <g:HTMLPanel styleName='mainPanel {style.canvas}'>
          <div ui:field='otherTagsText' class="{style.text}"/>
 	     <br /><br />
 	     <div class='{style.text}'>Du kannst auch ein Tag hinterlegen:</div>

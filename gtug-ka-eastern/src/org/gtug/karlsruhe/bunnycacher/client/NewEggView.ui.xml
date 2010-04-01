@@ -5,7 +5,8 @@
 		.canvas {
 			background: #000;
 			background: rgba(0, 0, 0, 0.75);
-			padding: 5px;
+			width: 100%;
+			padding: 15px;
 		}
 		.text {
 			font-weight: bold;
@@ -15,17 +16,38 @@
 			width: 97%;
 			height: 3em;
 		}
+		.cancel {
+			position: absolute;
+			left: 3px;
+			bottom: 3px;
+		}
+		.cancel:active {
+			left: 5px;
+			bottom: 1px;
+		}
+		.ok {
+			position: absolute;
+			right: 3px;
+			bottom: 3px;
+		}
+		.ok:active {
+			right: 1px;
+			bottom: 1px;
+		}
+		.tbar h1 {
+			padding-left: 40px;
+		}
 	</ui:style>
 	
 	<ui:with type="org.gtug.karlsruhe.bunnycacher.client.res.Resources" field="resources" />
 	
 	<g:HTMLPanel>
-		<g:HTMLPanel styleName='topToolbar'>
-			<h1>Osterei verstecken</h1>
-			<g:Button ui:field='cancelButton' styleName='cancelButton'>Abbruch</g:Button>
-			<g:Button ui:field='okButton' styleName='okButton'>OK</g:Button>
+		<g:HTMLPanel styleName='topToolbar {style.tbar}'>
+			<h1>Ei verstecken</h1>
+			<g:Button ui:field='cancelButton' addStyleNames='backButton {style.cancel}'>Abbruch</g:Button>
+			<g:Button ui:field='okButton' addStyleNames='{style.ok}'>OK</g:Button>
 		</g:HTMLPanel>
-	   <g:HTMLPanel width='100%'  styleName='mainPanel {style.canvas}'>
+	   <g:HTMLPanel styleName='mainPanel {style.canvas}'>
          <div ui:field='loginPrompt' class="{style.text}"/>
 	     <div class='{style.text}'>Dein Ei bekommt die Ei-D: <span ui:field='eidSpan'/>. Schreib Sie auf das Ei und verstecke es gut an der aktuellen Position.</div>
 	     <br /><br />
