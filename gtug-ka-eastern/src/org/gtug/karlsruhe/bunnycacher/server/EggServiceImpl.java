@@ -112,14 +112,17 @@ public class EggServiceImpl implements EggService {
     }
 
     @Override
+    @Transactional
     public void foundEgg(EggDto egg, String message) {
         createTag(egg.getEid(), message);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<TagDto> getTags(EggDto egg) {
-        // TODO Auto-generated method stub
-        return null;
+        Query query = entityManager.get().createQuery("SELECT tag FROM Tag tag WHERE egg = :egg");
+        query.setParameter("egg", findEggForEid(egg.getEid()));
+        return query.getResultList();
     }
 
 }
