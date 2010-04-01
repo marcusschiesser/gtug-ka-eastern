@@ -8,7 +8,6 @@ import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;
 import org.gtug.karlsruhe.phonegap.client.Notification;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -17,6 +16,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class FoundEggView extends Composite {
@@ -25,22 +25,11 @@ public class FoundEggView extends Composite {
 			.create(FoundEggViewUiBinder.class);
 	private EggDto eggDto;
 
-	private abstract class AsyncCallbackImplementation<T> implements
-			AsyncCallback<T> {
-		@Override
-		public void onFailure(Throwable caught) {
-			Notification.alert("Callback exception: " + caught.toString()
-					+ " : " + caught.getMessage(), "Error", ":(");
-			FoundEggView.this.parentForm.flipCard(BackSideOfCard.FRONT_SIDE);
-		}
-
-	}
-
 	interface FoundEggViewUiBinder extends UiBinder<Widget, FoundEggView> {
 	}
 
 	@UiField
-	DivElement otherTagsText;
+	VerticalPanel otherTags;
 
 	@UiField
 	Button okButton;
@@ -77,16 +66,21 @@ public class FoundEggView extends Composite {
 	}
 
 	public void setData(EggDto eggDto) {
+		otherTags.clear();
+		newTagText.setText("");
 		this.eggDto = eggDto;
 		Application.eggService.getTags(eggDto, new AsyncCallback<List<TagDto>>() {
 
 			@Override
 			public void onSuccess(List<TagDto> tags) {
-				StringBuffer sb = new StringBuffer();
-				for (TagDto tag : tags) {
-					sb.append(tag.getMessage() + "<br/>");
+				try {
+					for (final TagDto tag : tags) {
+						otherTags.add(new TagComposite(tag));
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				otherTagsText.setInnerHTML(sb.toString());
 			}
 
 			@Override
