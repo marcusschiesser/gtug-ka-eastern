@@ -1,0 +1,31 @@
+*	{
+	font-family: Verdana, Arial, sans-serif;
+	font-size:12px;
+	color:#000000;
+}
+
+body	{
+	background-color:#FFFFFF;
+	width:90%;
+}
+
+div	{
+	width:100%;
+	border-style:solid;
+	border-color:#000000;
+	border-width:0px;
+}
+
+img	{
+	margin:0px;
+	padding:0px;
+	border-style:none;
+}
+
+a	{
+	text-decoration:none;
+}
+
+p	{
+	font-size:16px;
+}
