@@ -1,7 +1,8 @@
 package org.gtug.karlsruhe.bunnycacher.common.service;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.gtug.karlsruhe.bunnycacher.client.LoginInfo;
+
+import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
 
 public interface LoginServiceAsync {
 

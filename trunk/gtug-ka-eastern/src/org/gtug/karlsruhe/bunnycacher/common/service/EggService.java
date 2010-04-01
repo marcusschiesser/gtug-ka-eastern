@@ -15,7 +15,7 @@ public interface EggService extends RemoteService {
 
     void createTag(long eid, String message);
 
-    long reserveEid();
+    Long reserveEid();
 
     void foundEgg(EggDto egg, String message);
 

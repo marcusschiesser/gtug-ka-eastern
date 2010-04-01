@@ -5,6 +5,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+
+import org.gtug.karlsruhe.bunnycacher.client.view.MainForm;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggServiceAsync;
 import org.gtug.karlsruhe.bunnycacher.common.service.LoginService;

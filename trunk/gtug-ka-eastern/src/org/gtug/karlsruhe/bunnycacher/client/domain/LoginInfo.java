@@ -1,4 +1,4 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.client.domain;
 
 import java.io.Serializable;
 

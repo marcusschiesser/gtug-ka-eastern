@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,14 +32,14 @@ public class Egg implements Serializable {
     private String hint;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, updatable = false)
     private Date created;
 
     @Column(nullable = false)
     private String creatorId;
 
-    @OneToOne
     @Column(nullable = false)
-    private Eid eid;
+    private long eid;
 
 
     /**
@@ -110,11 +109,11 @@ public class Egg implements Serializable {
         this.creatorId = creatorId;
     }
 
-    public Eid getEid() {
+    public long getEid() {
         return eid;
     }
 
-    public void setEid(Eid eid) {
+    public void setEid(long eid) {
         this.eid = eid;
     }
 

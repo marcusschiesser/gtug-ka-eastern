@@ -1,8 +1,10 @@
-package org.gtug.karlsruhe.bunnycacher.client;
+package org.gtug.karlsruhe.bunnycacher.client.view;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import org.gtug.karlsruhe.bunnycacher.client.domain.Ellipse;
+import org.gtug.karlsruhe.bunnycacher.client.domain.MapFactory;
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
 import org.gtug.karlsruhe.phonegap.client.Geolocation;
 
