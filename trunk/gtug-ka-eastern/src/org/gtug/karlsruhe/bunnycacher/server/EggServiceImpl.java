@@ -37,10 +37,19 @@ public class EggServiceImpl implements EggService {
     @Transactional
     public void createEgg(EggDto eggDto) {
         Egg egg = new Egg(eggDto);
+        egg.setEid(findEid(eggDto.getEid()));
         egg.setCreated(new Date());
         egg.setCreatorId(getUserId());
         entityManager.get().persist(egg);
         logger.fine("Saved entity!");
+    }
+
+    private Eid findEid(long eid) {
+        Eid eidObj = entityManager.get().find(Eid.class, eid);
+        if (eidObj == null) {
+            throw new RuntimeException(String.format("No eid %d found!", eid));
+        }
+        return eidObj;
     }
 
     private String getUserId() {
@@ -85,18 +94,21 @@ public class EggServiceImpl implements EggService {
     @Override
     @Transactional
     public void createTag(long eid, String message) {
+        Tag tag = new Tag();
+        tag.setEgg(findEggForEid(eid));
+        tag.setTimestamp(new Date());
+        tag.setUserId(getUserId());
+        tag.setMessage(message);
+        entityManager.get().persist(tag);
+    }
+
+    private Egg findEggForEid(long eid) {
         Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg WHERE eid = :eid");
         query.setParameter("eid", eid);
         if (query.getResultList().isEmpty()) {
             throw new RuntimeException(String.format("No corresponding egg found for eid %d!", eid));
         }
-        Egg egg = (Egg) query.getResultList().get(0);
-        Tag tag = new Tag();
-        tag.setEgg(egg);
-        tag.setTimestamp(new Date());
-        tag.setUserId(getUserId());
-        tag.setMessage(message);
-        entityManager.get().persist(tag);
+        return (Egg) query.getResultList().get(0);
     }
 
     @Override
