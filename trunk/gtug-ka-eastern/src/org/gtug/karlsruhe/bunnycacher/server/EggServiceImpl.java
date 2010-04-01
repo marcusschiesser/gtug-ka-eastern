@@ -126,9 +126,9 @@ public class EggServiceImpl implements EggService {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<TagDto> getTags(EggDto egg) {
-        Query query = entityManager.get().createQuery("SELECT tag FROM Tag tag WHERE egg = :egg");
-        query.setParameter("egg", findEggForEid(egg.getEid()));
+    public List<TagDto> getTags(EggDto eggDto) {
+        Query query = entityManager.get().createQuery("SELECT tag FROM Tag tag WHERE eid = :eid");
+        query.setParameter("eid", eggDto.getEid());
         return query.getResultList();
     }
 
