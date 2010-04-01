@@ -9,17 +9,17 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface EggServiceAsync {
 
-	void createEgg(EggDto egg, AsyncCallback<Void> callback);
+    void createEgg(EggDto egg, AsyncCallback<Void> callback);
 
-	void getEggsWithin(double minLat, double maxLat, double minLng,
-			double maxLng, AsyncCallback<List<EggDto>> callback);
+    void getEggsWithin(double minLat, double maxLat, double minLng,
+            double maxLng, AsyncCallback<List<EggDto>> callback);
 
-	void reserveEid(AsyncCallback<Integer> callback);
+    void reserveEid(AsyncCallback<Long> callback);
 
-	void createTag(long eid, String message, AsyncCallback<Void> callback);
+    void createTag(long eid, String message, AsyncCallback<Void> callback);
 
-	void foundEgg(EggDto egg, String message, AsyncCallback<Void> callback);
+    void foundEgg(EggDto egg, String message, AsyncCallback<Void> callback);
 
-	void getTags(EggDto egg, AsyncCallback<List<TagDto>> callback);
+    void getTags(EggDto egg, AsyncCallback<List<TagDto>> callback);
 
 }

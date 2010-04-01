@@ -11,17 +11,17 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("GWT.rpc")
 public interface EggService extends RemoteService {
 
-	void createEgg(EggDto egg);
+    void createEgg(EggDto egg);
 
-	void createTag(long eid, String message);
+    void createTag(long eid, String message);
 
-	Integer reserveEid();
+    long reserveEid();
 
-	void foundEgg(EggDto egg, String message);
+    void foundEgg(EggDto egg, String message);
 
-	List<EggDto> getEggsWithin(double minLat, double maxLat, double minLng,
-			double maxLng);
+    List<EggDto> getEggsWithin(double minLat, double maxLat, double minLng,
+            double maxLng);
 
-	List<TagDto> getTags(EggDto egg);
+    List<TagDto> getTags(EggDto egg);
 
 }

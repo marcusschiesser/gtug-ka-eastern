@@ -3,6 +3,7 @@ package org.gtug.karlsruhe.bunnycacher.server.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,66 +18,68 @@ import com.google.appengine.api.datastore.Key;
 @Entity
 public class Tag implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key key;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Key key;
 
-	@Lob
-	private String message;
+    @Lob
+    private String message;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date timestamp;
-	
-	@ManyToOne
-	private User user;
-	
-	@ManyToOne
-	private Egg egg;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date timestamp;
 
-	/**
-	 * Empty constructor for JPA
-	 */
+    @Column(nullable = false)
+    private String userId;
+
+    @ManyToOne
+    private Egg egg;
+
+    /**
+     * Empty constructor for JPA
+     */
     public Tag() {
     }
 
     public Key getKey() {
-		return key;
-	}
+        return key;
+    }
 
-	public void setKey(Key key) {
-		this.key = key;
-	}
+    public void setKey(Key key) {
+        this.key = key;
+    }
 
     public String getMessage() {
-		return message;
-	}
+        return message;
+    }
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
-	public Date getTimestamp() {
-		return timestamp;
-	}
+    public Date getTimestamp() {
+        return timestamp;
+    }
 
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
-	}
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public Egg getEgg() {
-		return egg;
-	}
+    public Egg getEgg() {
+        return egg;
+    }
 
-	public void setEgg(Egg egg) {
-		this.egg = egg;
-	}
+    public void setEgg(Egg egg) {
+        this.egg = egg;
+    }
+
+
 
 }
