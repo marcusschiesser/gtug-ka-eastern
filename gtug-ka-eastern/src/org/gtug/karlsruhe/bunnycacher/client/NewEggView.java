@@ -54,14 +54,14 @@ public class NewEggView extends Composite {
 
     private LatLng actPos;
     private MainForm parentForm;
-    private Integer eid;
+    private long eid;
 
     public NewEggView(MainForm form) {
         this.parentForm = form;
         initWidget(uiBinder.createAndBindUi(this));
-        Application.eggService.reserveEid(new AsyncCallbackImplementation<Integer>() {
+        Application.eggService.reserveEid(new AsyncCallbackImplementation<Long>() {
             @Override
-            public void onSuccess(Integer result) {
+            public void onSuccess(Long result) {
                 setEid(result);
             }
         });
@@ -78,9 +78,9 @@ public class NewEggView extends Composite {
 
     }
 
-    private void setEid(Integer eid) {
+    private void setEid(Long eid) {
         this.eid = eid;
-        eidSpan.setInnerText(Integer.toString(eid));
+        eidSpan.setInnerText(String.valueOf(eid));
     }
 
     public void setPosition(LatLng actPos) {
