@@ -3,7 +3,7 @@
 
 	<application>bunnycacher</application>
     <!--<application>bunnycasher-dev</application>-->
-    <version>2</version>
+    <version>3</version>
 
 	<!-- Configure java.util.logging -->
 	<system-properties>

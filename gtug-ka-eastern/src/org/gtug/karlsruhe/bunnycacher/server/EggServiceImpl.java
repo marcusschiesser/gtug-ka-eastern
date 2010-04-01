@@ -48,11 +48,9 @@ public class EggServiceImpl implements EggService {
     }
 
     private Eid findEid(long eid) {
-        Eid eidObj = entityManager.get().find(Eid.class, eid);
-        if (eidObj == null) {
-            throw new RuntimeException(String.format("No eid %d found!", eid));
-        }
-        return eidObj;
+        Query query = entityManager.get().createQuery("SELECT eid FROM Eid eid WHERE id = :eid");
+        query.setParameter("eid", eid);
+        return (Eid) query.getSingleResult();
     }
 
     private String getUserId() {
@@ -79,7 +77,7 @@ public class EggServiceImpl implements EggService {
 
         List<EggDto> eggDtos = new ArrayList<EggDto>();
         for (Egg egg : (List<Egg>) query.getResultList()) {
-            eggDtos.add(new EggDto(egg.getKey().getId(), egg.getLatitude(), egg.getLongitude(), egg.getHint()));
+            eggDtos.add(new EggDto(egg.getEid(), egg.getLatitude(), egg.getLongitude(), egg.getHint()));
         }
         return eggDtos;
     }
