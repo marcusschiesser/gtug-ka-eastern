@@ -234,3 +234,25 @@ body .gwt-PopupPanel .gwt-Label {
 	font-size: 1.2em;
 	margin-bottom: 5px;
 }
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1.0;
+    -webkit-transform: scale(1.05);
+  }
+  40% {
+    opacity: 0.35;
+    -webkit-transform: scale(0.85);
+  }
+  100% {
+    opacity: 1.0;
+    -webkit-transform: scale(1.05);
+  }
+}
+
+#map_canvas div[style*="blue_dot_circle.png"] {
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+}
