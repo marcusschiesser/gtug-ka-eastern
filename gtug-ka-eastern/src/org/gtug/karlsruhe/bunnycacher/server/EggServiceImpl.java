@@ -127,7 +127,12 @@ public class EggServiceImpl implements EggService {
     public List<TagDto> getTags(EggDto eggDto) {
         Query query = entityManager.get().createQuery("SELECT tag FROM Tag tag WHERE eid = :eid");
         query.setParameter("eid", eggDto.getEid());
-        return query.getResultList();
+        
+        List<TagDto> tagDtos = new ArrayList<TagDto>();
+        for (Tag tag : (List<Tag>) query.getResultList()) {
+            tagDtos.add(new TagDto(tag.getMessage(), tag.getTimestamp(), tag.getUserId(), tag.getEid()));
+        }
+        return tagDtos;
     }
 
 }

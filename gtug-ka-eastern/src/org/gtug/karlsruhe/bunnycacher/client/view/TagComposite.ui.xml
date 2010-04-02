@@ -3,19 +3,18 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 		.panel {
-			color: #fff;
 		}
 		.userLabel {
 			font-weight: bold;
 		}
 		.tagLabel {
 		}
+		.timeLabel {
+			
+		}
 	</ui:style>
 	<g:HTMLPanel styleName="{style.panel}">
-		<g:Label ui:field='userLabel'
-			styleName="{style.userLabel}">
-		</g:Label>
-		:
-		<g:Label ui:field='tagLabel' styleName="{style.tagLabel}"></g:Label>
+		<g:InlineLabel ui:field='userLabel' styleName="{style.userLabel}" /> (<g:InlineLabel ui:field='timeLabel' styleName="{style.timeLabel}" />):<br />
+		<g:InlineLabel ui:field='tagLabel' styleName="{style.tagLabel}" />
 	</g:HTMLPanel>
 </ui:UiBinder> 
