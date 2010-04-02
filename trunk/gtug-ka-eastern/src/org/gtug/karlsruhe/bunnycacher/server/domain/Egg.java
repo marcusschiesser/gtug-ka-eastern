@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
+import org.gtug.karlsruhe.bunnycacher.server.util.GeohashUtils;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -23,8 +24,7 @@ public class Egg implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 
-    private double latitude;
-    private double longitude;
+    private String geohash;
 
     @Lob
     private String hint;
@@ -46,17 +46,14 @@ public class Egg implements Serializable {
     public Egg() {
     }
 
-    public Egg(EggDto eggDto) {
-        this.latitude = eggDto.getLatitude();
-        this.longitude = eggDto.getLongitude();
-        this.hint = eggDto.getHint();
+    public Egg(double latitude, double longitude, String hint) {
+        this();
+        this.geohash = GeohashUtils.encode(latitude, longitude);
+        this.hint = hint;
     }
 
-    public Egg(double latitude, double longitude, String hint) {
-        super();
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.hint = hint;
+    public Egg(EggDto eggDto) {
+        this(eggDto.getLatitude(), eggDto.getLongitude(), eggDto.getHint());
     }
 
     public Key getKey() {
@@ -67,20 +64,13 @@ public class Egg implements Serializable {
         this.key = key;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public Geohash getGeohash() {
+        double[][] geohash = GeohashUtils.decode(this.geohash);
+        return new Geohash(geohash[0][2], geohash[1][2]);
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setGeohash(Geohash geohash) {
+        this.geohash = GeohashUtils.encode(geohash.getLatitude(), geohash.getLongitude());
     }
 
     public String getHint() {
