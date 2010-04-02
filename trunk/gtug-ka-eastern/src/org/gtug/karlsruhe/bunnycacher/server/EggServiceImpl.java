@@ -64,7 +64,7 @@ public class EggServiceImpl implements EggService {
         if (user == null) {
             throw new RuntimeException("User not authenticated!");
         }
-        return user.getUserId();
+        return user.getNickname();
     }
 
     @SuppressWarnings("unchecked")
