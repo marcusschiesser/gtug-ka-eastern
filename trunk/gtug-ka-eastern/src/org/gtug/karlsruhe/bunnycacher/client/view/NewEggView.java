@@ -1,5 +1,12 @@
 package org.gtug.karlsruhe.bunnycacher.client.view;
 
+import org.gtug.karlsruhe.bunnycacher.client.Application;
+import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
+import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
+import org.gtug.karlsruhe.bunnycacher.client.util.ScrollUtils;
+import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
+import org.gtug.karlsruhe.phonegap.client.Notification;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.SpanElement;
@@ -8,14 +15,12 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.maps3.client.LatLng;
-
-import org.gtug.karlsruhe.bunnycacher.client.Application;
-import org.gtug.karlsruhe.bunnycacher.client.domain.LoginInfo;
-import org.gtug.karlsruhe.bunnycacher.client.res.Resources;
-import org.gtug.karlsruhe.bunnycacher.common.domain.EggDto;
-import org.gtug.karlsruhe.phonegap.client.Notification;
 
 public class NewEggView extends Composite {
 
@@ -51,6 +56,9 @@ public class NewEggView extends Composite {
 
     @UiField
     HasText tagText;
+    
+    @UiField
+	HTMLPanel scroller;
 
     @UiField(provided = true)
     final Resources resources = Resources.INSTANCE;
@@ -62,6 +70,7 @@ public class NewEggView extends Composite {
     public NewEggView(MainForm form) {
         this.parentForm = form;
         initWidget(uiBinder.createAndBindUi(this));
+        ScrollUtils.setUpScroll(scroller.getElement());
         Application.eggService.reserveEid(new AsyncCallbackImplementation<Long>() {
             @Override
             public void onSuccess(Long result) {
@@ -80,7 +89,7 @@ public class NewEggView extends Composite {
         });
 
     }
-
+    
     private void setEid(Long eid) {
         this.eid = eid;
         eidSpan.setInnerText(String.valueOf(eid));

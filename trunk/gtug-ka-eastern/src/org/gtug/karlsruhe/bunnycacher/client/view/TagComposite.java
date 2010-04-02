@@ -22,11 +22,15 @@ public class TagComposite extends Composite {
 
     @UiField
     HasText tagLabel;
+    
+    @UiField
+    HasText timeLabel;
 
     public TagComposite(TagDto tag) {
         initWidget(uiBinder.createAndBindUi(this));
         userLabel.setText(tag.getUserId());
         tagLabel.setText(tag.getMessage());
+        timeLabel.setText(tag.getTimestamp().toLocaleString());
     }
 
 

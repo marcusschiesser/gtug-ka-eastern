@@ -3,9 +3,6 @@
   xmlns:g="urn:import:com.google.gwt.user.client.ui">
   <ui:style>
     .canvas {
-      background: #000;
-      background: rgba(0, 0, 0, 0.75);
-      width: 100%;
       padding: 15px;
     }
     .cancel {
@@ -27,7 +24,7 @@
       bottom: 1px;
     }
     .text {
-      color: #fff;
+    	font-weight: bold;
     }
     .textInput {
       display: block;
@@ -47,11 +44,11 @@
       <g:Button ui:field='cancelButton' addStyleNames='backButton {style.cancel}'>Abbruch</g:Button>
       <g:Button ui:field='okButton' addStyleNames='{style.ok}'>Ok, Tag anlegen</g:Button>
     </g:HTMLPanel>
-     <g:HTMLPanel styleName='mainPanel {style.canvas}'>
+     <g:HTMLPanel styleName='mainPanel {style.canvas}'><g:HTMLPanel ui:field='scroller'>
      <g:VerticalPanel ui:field='otherTags'></g:VerticalPanel>
        <div class='{style.text}'>Du kannst auch ein Tag hinterlegen:</div>
        <g:TextArea ui:field="newTagText" styleName='{style.textInput}'></g:TextArea>
-     </g:HTMLPanel>
+     </g:HTMLPanel></g:HTMLPanel>
    </g:HTMLPanel>
 
 </ui:UiBinder>

@@ -8,18 +8,18 @@ public class TagDto implements Serializable {
     private String message;
     private Date timestamp;
     private String userId;
-    private EggDto egg;
+    private long eid;
 
     public TagDto() {
 
     }
 
-    public TagDto(String message, Date timestamp, String userId, EggDto egg) {
+    public TagDto(String message, Date timestamp, String userId, long eid) {
         this();
         this.message = message;
         this.timestamp = timestamp;
         this.userId = userId;
-        this.egg = egg;
+        this.eid = eid;
     }
 
     public String getMessage() {
@@ -46,12 +46,12 @@ public class TagDto implements Serializable {
         this.userId = userId;
     }
 
-    public EggDto getEgg() {
-        return egg;
+    public long getEid() {
+        return eid;
     }
 
-    public void setEgg(EggDto egg) {
-        this.egg = egg;
+    public void setEid(long eid) {
+        this.eid = eid;
     }
 
 }

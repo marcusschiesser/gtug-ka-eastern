@@ -3,14 +3,10 @@
   xmlns:g="urn:import:com.google.gwt.user.client.ui">
   <ui:style>
     .canvas {
-      background: #000;
-      background: rgba(0, 0, 0, 0.75);
-      width: 100%;
       padding: 15px;
     }
     .text {
       font-weight: bold;
-      color: #fff;
     }
     .textInput {
       width: 97%;
@@ -47,7 +43,7 @@
       <g:Button ui:field='cancelButton' addStyleNames='backButton {style.cancel}'>Abbruch</g:Button>
       <g:Button ui:field='okButton' addStyleNames='{style.ok}'>OK</g:Button>
     </g:HTMLPanel>
-     <g:HTMLPanel styleName='mainPanel {style.canvas}'>
+     <g:HTMLPanel styleName='mainPanel {style.canvas}'><g:HTMLPanel ui:field='scroller'>
          <div ui:field='loginPrompt' class="{style.text}"/>
        <div class='{style.text}'>Dein Ei bekommt die Ei-D: <span ui:field='eidSpan'/>. Schreib Sie auf das Ei und verstecke es gut an der aktuellen Position.</div>
        <br /><br />
@@ -55,7 +51,7 @@
        <g:TextArea ui:field="hintText" styleName='{style.textInput}'></g:TextArea>
        <div class='{style.text}'>Optional hier noch ein Kommentar für die Leute, die das Ei gefunden haben:</div>
        <g:TextArea ui:field="tagText" styleName='{style.textInput}'></g:TextArea>
-     </g:HTMLPanel>
+     </g:HTMLPanel></g:HTMLPanel>
    </g:HTMLPanel>
 
 </ui:UiBinder>

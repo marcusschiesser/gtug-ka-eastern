@@ -23,7 +23,7 @@
 }
 .cardFaceBack {
 	color: rgb(34,65,108);
-	background-color: rgba(78,150,249,0.5);
+	background: #577DAF url(pinstripes.png);
 	z-index: 1;
 }
 .cardFaceHidden {
@@ -67,12 +67,12 @@
 	}
 	.cardContainer {
 		-webkit-tap-highlight-color: rgba(0,0,0,0);
-		-webkit-perspective: 900;
+		-webkit-perspective: 250;
 	}
 	.cardCard {
 		-webkit-transform-style: preserve-3d;	
 		-webkit-transition-property: -webkit-transform;
-		-webkit-transition-duration: 1.0s;
+		-webkit-transition-duration: 0.75s;
 	}
 	.cardCard.cardCardFlipped {
 		-webkit-transform: rotateY(180deg);
