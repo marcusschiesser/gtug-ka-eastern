@@ -32,7 +32,8 @@ public class MapFactory {
 	public static Marker createPosition(MapWidget map, LatLng latLng) {
 		Marker pos = Marker.newInstance();
 		pos.setPosition(latLng);
-		pos.setIcon("icons/rabbiticon.png");
+		MarkerImage icon = MarkerImage.newInstance("icons/blue_dot_circle.png", Point.newInstance(38/2, 38/2));
+		pos.setIcon(icon);
 		pos.setMap(map.getMapJSO());
 		return pos;
 	}
