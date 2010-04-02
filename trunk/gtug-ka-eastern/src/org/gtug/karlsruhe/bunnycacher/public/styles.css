@@ -237,19 +237,19 @@ body .gwt-PopupPanel .gwt-Label {
 
 @-webkit-keyframes pulse {
   0% {
-    opacity: 1.0;
     -webkit-transform: scale(1.05);
   }
   40% {
-    opacity: 0.7;
     -webkit-transform: scale(0.85);
   }
   100% {
-    opacity: 1.0;
     -webkit-transform: scale(1.05);
   }
 }
 
+.mainPanel {
+	/*-webkit-transform-style: flat;*/
+}
 div[style*="blue_dot_circle.png"] {
   -webkit-animation-name: pulse;
   -webkit-animation-duration: 2s;
