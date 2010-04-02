@@ -13,8 +13,10 @@ import org.gtug.karlsruhe.bunnycacher.common.domain.TagDto;
 import org.gtug.karlsruhe.bunnycacher.common.service.EggService;
 import org.gtug.karlsruhe.bunnycacher.server.domain.Egg;
 import org.gtug.karlsruhe.bunnycacher.server.domain.Eid;
+import org.gtug.karlsruhe.bunnycacher.server.domain.Geohash;
 import org.gtug.karlsruhe.bunnycacher.server.domain.Tag;
 import org.gtug.karlsruhe.bunnycacher.server.util.GaeUtils;
+import org.gtug.karlsruhe.bunnycacher.server.util.GeohashUtils;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -68,16 +70,14 @@ public class EggServiceImpl implements EggService {
     @SuppressWarnings("unchecked")
     @Override
     public List<EggDto> getEggsWithin(double minLat, double maxLat, double minLng, double maxLng) {
-        /*Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg WHERE egg.latitude > :latitudelow AND egg.latitude < :latitudehigh AND egg.longitude > :longitudelow AND egg.longitude < :longitudehigh");
-        query.setParameter("latitudelow", latitude - 0.001);
-        query.setParameter("latitudehigh", latitude + 0.001);
-        query.setParameter("longitudelow", longitude - 0.001);
-        query.setParameter("longitudehigh", longitude + 0.001);*/
-        Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg");
+        Query query = entityManager.get().createQuery("SELECT egg FROM Egg egg WHERE geohash >= :geohash_min AND geohash <= :geohash_max");
+        query.setParameter("geohash_min", GeohashUtils.encode(minLat, minLng));
+        query.setParameter("geohash_max", GeohashUtils.encode(maxLat, maxLng));
 
         List<EggDto> eggDtos = new ArrayList<EggDto>();
         for (Egg egg : (List<Egg>) query.getResultList()) {
-            eggDtos.add(new EggDto(egg.getEid(), egg.getLatitude(), egg.getLongitude(), egg.getHint()));
+            Geohash geohash = egg.getGeohash();
+            eggDtos.add(new EggDto(egg.getEid(), geohash.getLatitude(), geohash.getLongitude(), egg.getHint()));
         }
         return eggDtos;
     }
