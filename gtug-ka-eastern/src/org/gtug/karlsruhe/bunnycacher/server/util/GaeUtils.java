@@ -3,7 +3,7 @@ package org.gtug.karlsruhe.bunnycacher.server.util;
 public final class GaeUtils {
 
     private GaeUtils() {
-        throw new IllegalAccessError();
+        throw new AssertionError();
     }
 
     public static boolean isDevelopmentMode() {
